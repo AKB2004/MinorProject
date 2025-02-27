@@ -10,6 +10,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import React from 'react';
 import First from './First';
 import LinearGradient from 'react-native-linear-gradient';
+// import Pic from './Pic';
 // import MyButton from './MyButton';
 
 const Home = ( {navigation} ) => {
@@ -18,15 +19,14 @@ const Home = ( {navigation} ) => {
     locations={[0.01, 1]}
     style={styles.gradient}>
     <View style={styles.container}>
-    {/* <Image source={require('./assets/img/first.png')} style={styles.logo} /> */}
-      <Text style={{fontSize:30, fontWeight:'light'}}>SecuResidences </Text>
+    <Image source={require('../../assets/img/first.png')} style={styles.img}/>
       <First/>
-      {/* <Button title='Get Started' onPress={()=> navigation.navigate('Login') } style={styles.Button}/> */}
         <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('Login')}>
-          <Text style={styles.buttonText}>     Get Started     </Text>
+          <Text style={styles.buttonText}>       Get Started       </Text>
         </TouchableOpacity>
+        {/* <Pic/> */}
     </View>
     </LinearGradient>
   );
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
 button: {
   backgroundColor: '#43328B',
   paddingVertical: 12,
-  paddingHorizontal: 40,
+  paddingHorizontal: 70,
   borderRadius: 8,
   marginTop: 35,
 },
@@ -60,9 +60,13 @@ buttonText: {
   textAlign: 'center',
 },
 logo: {
-  width: 200, // Adjust width as needed
-  height: 100, // Adjust height as needed
-  resizeMode: 'contain', // Ensures the image maintains aspect ratio
+  width: 200,
+  height: 100,
+  resizeMode: 'contain',
   marginBottom: 20,
+},
+img: {
+  width:300,
+  height:150,
 },
 });

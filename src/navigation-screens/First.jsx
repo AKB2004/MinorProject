@@ -12,7 +12,9 @@ const First = () => {
 const styles = StyleSheet.create({
     container: {
       padding: 20,
-      alignItems: 'center', // Center the text horizontally
+      alignItems: 'center',
+      marginTop:-10,
+      marginBottom:50,
     },
     text: {
       fontSize: 14,

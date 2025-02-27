@@ -11,6 +11,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './src/navigation-screens/Home';
 import Login from './src/navigation-screens/Login';
+import Dashboard from './src/navigation-screens/Dashboard';
+import Register from './src/navigation-screens/Register';
 // import First from './src/navigation-screens/First';
 
 const Stack = createNativeStackNavigator();
@@ -24,9 +26,22 @@ const App = () => {
           component={Home}
           options={{headerShown: false}}
         />
-        {/* <Stack.Screen name="First" component={First} /> */}
 
-        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Dashboard"
+          component={Dashboard}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Register"
+          component={Register}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
