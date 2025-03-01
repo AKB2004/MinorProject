@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet,Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -20,7 +21,6 @@ const Register = () => {
       <Text style={{fontSize:30, fontWeight:'bold',marginTop:30,marginLeft:20}}>Sign Up</Text>
       <Text style={{fontSize:20,marginLeft:20}}>Let's Know about yourself</Text>
       <Image source={require('../../assets/img/signuppagepic.png')} style={styles.img}/>
-      
       <TextInput
       placeholder="Enter name"
       placeholderTextColor="#36454F"
@@ -35,14 +35,13 @@ const Register = () => {
       placeholderTextColor="#36454F"
       style={[styles.input1, { flex: 1 }]}
     />
-    <TouchableOpacity 
+    <TouchableOpacity
     onPress={() => console.log('Send OTP pressed')}
     style={styles.button}>
       <Text style={styles.buttonText}>
         Send OTP
       </Text>
     </TouchableOpacity>
-    
   </View>
   <TextInput
     placeholder="Enter OTP"
