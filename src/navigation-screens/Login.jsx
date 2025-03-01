@@ -60,7 +60,7 @@ const Login = () => {
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
     <Text style={styles.recoveryText}>Not a member? </Text>
     <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-        <Text style={{ color: '#7F00FF', fontWeight: 'bold',marginTop:15 }}>Register now</Text>
+        <Text style={{ color: '#51158C', fontWeight: 'bold',marginTop:15 }}>Register now</Text>
     </TouchableOpacity>
 </View>
     </LinearGradient>
