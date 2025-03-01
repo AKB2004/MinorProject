@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput } from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
 
 const CourseButton = ({ title, onPress }) => {
@@ -13,6 +14,9 @@ const CourseButton = ({ title, onPress }) => {
 
 
 const DetailsPage2 = () => {
+
+    const navigation = useNavigation();
+
   return (
     <LinearGradient
         colors={['#E6E6FA', '#43328B']}
@@ -37,8 +41,25 @@ const DetailsPage2 = () => {
         <Text  style={{fontSize:22, marginTop:20, marginLeft:30, fontWeight:'bold'}}>
         Date of Birth
         </Text>
-        
+        <TextInput
+        placeholder='DD/MM/YYYY'
+        placeholderTextColor="#36454F"
+        style={styles.input}/>
       </View>
+      <View style={styles.contain}>
+<TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('Login')}>
+                <Text style={styles.buttonText}>Register</Text>
+            </TouchableOpacity>
+            <Text style={{marginBottom:8}}>___________________________________</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+    <Text style={styles.recoveryText}>Already an user? </Text>
+    <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <Text style={{ color: '#51158C', fontWeight: 'bold',marginTop:5, fontSize:17, marginLeft:5}}>Login</Text>
+    </TouchableOpacity>
+</View>
+</View>
     </LinearGradient>
   );
 };
@@ -88,6 +109,48 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '600',
     color: '#000',
+  },
+  button: {
+    backgroundColor: '#43328B',
+    paddingVertical: 12,
+    paddingHorizontal: 0,
+    borderRadius: 8,
+    // marginTop: 35,
+    marginBottom:10,
+    width:200,
+    // alignSelf:'center',
+  },
+  buttonText: {
+    color: 'white', // Text color
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    // marginTop:10,
+  },
+  contain:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center',
+  },
+  recoveryText: {
+    textAlign: 'right',
+    marginTop: 5,
+    alignSelf: 'flex-end', // Align to right
+    color: 'black',
+    fontSize:17,
+  },
+  input: {
+    width: '80%',
+    borderWidth: 1,
+    borderColor: 'grey',
+    padding: 10,
+    borderRadius: 10,
+    // marginBottom: 15,
+    height: 60,
+    marginTop:5,
+    marginLeft:30,
+    backgroundColor: 'white',
+    fontSize:20,
   },
 });
 

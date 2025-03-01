@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
       color: 'white', // Text color
-      fontSize: 19,
+      fontSize: 20,
       fontWeight: 'bold',
       textAlign: 'center',
     },

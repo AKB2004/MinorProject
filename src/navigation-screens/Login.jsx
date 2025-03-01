@@ -88,7 +88,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     height: 60,
     marginTop:5,
-    backgroundColor: 'white', // Better visibility
+    backgroundColor: 'white',
+    fontSize:20,
   },
   passwordContainer: {
     flexDirection: 'row',
@@ -99,11 +100,12 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop:15,
     height: 60,
-    backgroundColor: 'white', // Same as input
+    backgroundColor: 'white',
   },
   passwordInput: {
     flex: 1,
     padding: 10,
+    fontSize:20,
   },
   eyeIcon: {
     padding: 10,
@@ -113,7 +115,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     alignSelf: 'flex-end', // Align to right
     color: 'black',
-    fontSize:15,
+    fontSize:17,
   },
   button: {
     backgroundColor: '#43328B',
@@ -126,7 +128,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white', // Text color
-    fontSize: 19,
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
   },

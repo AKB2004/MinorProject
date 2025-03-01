@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
       marginTop:10,
       backgroundColor: 'white',
       marginLeft:20,
+      fontSize:20,
       // marginTop:30,
     },
     input1: {
@@ -113,6 +114,7 @@ const styles = StyleSheet.create({
       marginTop:10,
       backgroundColor: 'white',
       marginLeft:20,
+      fontSize:20,
       // marginTop:30,
     },
     button: {
@@ -120,6 +122,7 @@ const styles = StyleSheet.create({
       paddingVertical: 12,
       paddingHorizontal: 20,
       borderRadius: 10,
+      fontSize:20,
       marginLeft:10,
       marginRight:22,
       marginTop: -10,
@@ -128,7 +131,7 @@ const styles = StyleSheet.create({
     },
     button1: {
       backgroundColor: '#43328B',
-      paddingVertical: 10,
+      paddingVertical: 12,
       // paddingHorizontal: 20,
       borderRadius: 10,
       // width: '10%',
@@ -138,10 +141,11 @@ const styles = StyleSheet.create({
       marginTop: 30,
       // marginBottom:15,
       width:'auto',
+      fontSize:20,
     },
     buttonText: {
       color: 'white', // Text color
-      fontSize: 19,
+      fontSize: 20,
       fontWeight: 'bold',
       textAlign: 'center',
     },
@@ -163,6 +167,7 @@ const styles = StyleSheet.create({
     passwordInput: {
       flex: 1,
       padding: 10,
+      fontSize:20,
     },
 });
 export default Register;
