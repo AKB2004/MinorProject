@@ -10,20 +10,20 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false); // Toggle visibility
 
   return (
-    <LinearGradient 
+    <LinearGradient
       colors={['#E6E6FA', '#43328B']}
       locations={[0.01, 1]}
       style={styles.gradient}
     >
       <View style={styles.container}>
-<Image source={require('../../assets/img/first.png')} style={styles.img}/>
+<Image source={require('../../assets/img/loginpagepic.png')} style={styles.img}/>
 
         {/* Username Input */}
         <Text style={{fontSize:30,fontWeight:'bold', marginBottom:5}}>Welcome Back!</Text>
-        <Text style={{fontSize:17,fontWeight:'light', marginBottom:30}}>Please enter your details</Text>
+        <Text style={{fontSize:17,fontWeight:'light',marginBottom:30}}>Please enter your details</Text>
         <TextInput
           placeholder="Enter username"
-          placeholderTextColor="grey"
+          placeholderTextColor="#36454F"
           style={styles.input}
         />
 
@@ -31,12 +31,13 @@ const Login = () => {
         <View style={styles.passwordContainer}>
           <TextInput
             placeholder="Password"
-            placeholderTextColor="grey"
+            placeholderTextColor="#36454F"
             style={styles.passwordInput}
             secureTextEntry={!showPassword} // Hide/show password
             value={password}
             onChangeText={setPassword}
           />
+
           <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
             <Icon
               name={showPassword ? 'eye' : 'eye-off'} // Eye icon toggle
@@ -45,9 +46,9 @@ const Login = () => {
               style={styles.eyeIcon}
             />
           </TouchableOpacity>
-        </View>
 
-        <Text style={styles.recoveryText}>Recovery Password</Text>
+        </View>
+        <Text style={{marginLeft:210,marginTop:10}}>Recovery Password</Text>
       </View>
       <TouchableOpacity
               style={styles.button}
@@ -55,12 +56,12 @@ const Login = () => {
                 <Text style={styles.buttonText}>       Login       </Text>
               </TouchableOpacity>
               <Text style={{marginBottom:10}}>_________________________________</Text>
-              
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+    <Text style={styles.recoveryText}>Not a member? </Text>
     <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-  
-    <Text style={{ color: '#7F00FF', fontWeight: 'bold' }}>Register now</Text>
- 
-</TouchableOpacity>
+        <Text style={{ color: '#7F00FF', fontWeight: 'bold',marginTop:15 }}>Register now</Text>
+    </TouchableOpacity>
+</View>
     </LinearGradient>
   );
 };
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     width: '93%',
     padding: 20,
     alignItems: 'center',
-    
+
   },
   input: {
     width: '100%',
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
   },
   img: {
     width:300,
-    height:150,
+    height:200,
   },
 });
 

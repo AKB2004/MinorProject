@@ -13,6 +13,7 @@ import Home from './src/navigation-screens/Home';
 import Login from './src/navigation-screens/Login';
 import Dashboard from './src/navigation-screens/Dashboard';
 import Register from './src/navigation-screens/Register';
+import Details from './src/navigation-screens/Details';
 // import First from './src/navigation-screens/First';
 
 const Stack = createNativeStackNavigator();
@@ -40,6 +41,11 @@ const App = () => {
         <Stack.Screen
           name="Register"
           component={Register}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Details"
+          component={Details}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
