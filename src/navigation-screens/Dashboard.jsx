@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-inline-styles */
+// /* eslint-disable react-native/no-inline-styles */
 import { View, Text, StyleSheet, Image } from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
@@ -41,7 +43,7 @@ const Dashboard = () => {
             </Text>
             </View>
           </View>
-          <View style={{flexDirection:'row'
+          <View style={{flexDirection:'row',
           }}>
             <Image source={require('../../assets/img/profession.png')} style={styles.img3}/>
             <View style={{flexDirection:'column',
@@ -54,7 +56,6 @@ const Dashboard = () => {
               B Tech
             </Text>
             </View>
-            
           </View>
         </View>
         </LinearGradient>
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
         gap:20,
         marginLeft:15,
       },
-      
+
       text1:{
         fontSize:30,
         fontWeight:'bold',

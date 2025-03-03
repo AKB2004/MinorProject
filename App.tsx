@@ -15,6 +15,8 @@ import Dashboard from './src/navigation-screens/Dashboard';
 import Register from './src/navigation-screens/Register';
 import Details from './src/navigation-screens/Details';
 import DetailsPage2 from './src/navigation-screens/DetailsPage2';
+import WardenDashboard from './src/navigation-screens/WardenDashboard';
+
 // import First from './src/navigation-screens/First';
 
 const Stack = createNativeStackNavigator();
@@ -37,6 +39,11 @@ const App = () => {
         <Stack.Screen
           name="Dashboard"
           component={Dashboard}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="WardenDashboard"
+          component={WardenDashboard}
           options={{headerShown: false}}
         />
         <Stack.Screen
