@@ -52,13 +52,13 @@ const DetailsPage2 = () => {
             onPress={() => navigation.navigate('Login')}>
                 <Text style={styles.buttonText}>Register</Text>
             </TouchableOpacity>
-            <Text style={{marginBottom:8}}>___________________________________</Text>
+            {/* <Text style={{marginBottom:8}}>___________________________________</Text>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
     <Text style={styles.recoveryText}>Already an user? </Text>
     <TouchableOpacity onPress={() => navigation.navigate('Login')}>
         <Text style={{ color: '#51158C', fontWeight: 'bold',marginTop:5, fontSize:17, marginLeft:5}}>Login</Text>
     </TouchableOpacity>
-</View>
+</View> */}
 </View>
     </LinearGradient>
   );
