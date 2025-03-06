@@ -9,6 +9,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import 'react-native-gesture-handler';
 import Home from './src/navigation-screens/Home';
 import Login from './src/navigation-screens/Login';
 import Dashboard from './src/navigation-screens/Dashboard';
@@ -16,6 +17,11 @@ import Register from './src/navigation-screens/Register';
 import Details from './src/navigation-screens/Details';
 import DetailsPage2 from './src/navigation-screens/DetailsPage2';
 import WardenDashboard from './src/navigation-screens/WardenDashboard';
+import AttendancePage from './src/navigation-screens/AttendancePage';
+import ComplaintPage from './src/navigation-screens/ComplaintPage';
+import MessPage from './src/navigation-screens/MessPage';
+import FeesPage from './src/navigation-screens/FeesPage';
+
 
 // import First from './src/navigation-screens/First';
 
@@ -61,6 +67,22 @@ const App = () => {
           component={DetailsPage2}
           options={{headerShown: false}}
         />
+        <Stack.Screen
+        name="AttendancePage"
+        component={AttendancePage}
+        options={{headerShown:false}}/>
+        <Stack.Screen
+        name="ComplaintPage"
+        component={ComplaintPage}
+        options={{headerShown:false}}/>
+        <Stack.Screen
+        name="MessPage"
+        component={MessPage}
+        options={{headerShown:false}}/>
+        <Stack.Screen
+        name="FeesPage"
+        component={FeesPage}
+        options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
