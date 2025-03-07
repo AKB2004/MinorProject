@@ -59,8 +59,12 @@ const [slideAnimation] = useState(new Animated.Value(0));
 
 
       <View>
-        <Text style={{fontSize:30}}>fees page</Text>
+        <Text style={styles.texting}>Payment</Text>
+        <Image
+        source={require('../../assets/img/paymentpic.png')}
+        style={styles.paymentimg}/>
       </View>
+      
 
 <View style={styles.bottomNavContainer}>
         <TouchableOpacity
@@ -131,6 +135,12 @@ const styles = StyleSheet.create({
   gradient: {
     flex: 1,
   },
+  texting:{
+    fontSize:38,
+    fontWeight:'bold',
+    marginLeft:20,
+    marginTop:40,
+  },
   img: {
     height: 70,
     width: 200,
@@ -146,6 +156,11 @@ const styles = StyleSheet.create({
   img3: {
     height: 50,
     width: 50,
+  },
+  paymentimg:{
+    width:300,
+    height:300,
+    alignSelf:'center',
   },
   container: {
     flexDirection: 'row',

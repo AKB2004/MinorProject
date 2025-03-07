@@ -59,7 +59,7 @@ const [slideAnimation] = useState(new Animated.Value(0));
 
 
       <View>
-        <Text style={{fontSize:30}}>complaint page</Text>
+        <Text style={styles.texting}>Choose the Service</Text>
       </View>
 
 <View style={styles.bottomNavContainer}>
@@ -130,6 +130,12 @@ const [slideAnimation] = useState(new Animated.Value(0));
 const styles = StyleSheet.create({
   gradient: {
     flex: 1,
+  },
+  texting:{
+    fontSize:30,
+    fontWeight:'bold',
+    marginTop:30,
+    alignSelf:'center',
   },
   img: {
     height: 70,

@@ -57,8 +57,8 @@ const [slideAnimation] = useState(new Animated.Value(0));
     style={styles.gradient}>
 
     <View>
-      <Text style={{fontSize:30}}>
-        attendance
+      <Text style={styles.texting}>
+        Attendance status
       </Text>
     </View>
 
@@ -136,6 +136,12 @@ const [slideAnimation] = useState(new Animated.Value(0));
 const styles = StyleSheet.create({
   gradient: {
     flex: 1,
+  },
+  texting:{
+    alignSelf:'center',
+    fontSize:30,
+    fontWeight:'bold',
+    marginTop:30,
   },
   img: {
     height: 70,

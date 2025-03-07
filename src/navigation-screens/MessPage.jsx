@@ -59,7 +59,10 @@ const [slideAnimation] = useState(new Animated.Value(0));
 
 
       <View>
-        <Text style={{fontSize:30}}>mess page</Text>
+        <Text style={styles.texting}>Today's Menu</Text>
+        <Image
+        source={require('../../assets/img/messpic.png')}
+        style={styles.messpageimg}/>
       </View>
 
 <View style={styles.bottomNavContainer}>
@@ -130,6 +133,18 @@ const [slideAnimation] = useState(new Animated.Value(0));
 const styles = StyleSheet.create({
   gradient: {
     flex: 1,
+  },
+  texting:{
+    fontSize:38,
+    marginTop:30,
+    marginLeft:20,
+    fontWeight:'bold',
+  },
+  messpageimg:{
+    width:250,
+    height:220,
+    alignSelf:'center',
+    marginTop:10,
   },
   img: {
     height: 70,
