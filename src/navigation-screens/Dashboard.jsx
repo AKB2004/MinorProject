@@ -141,18 +141,18 @@ const Dashboard = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   // Toggle the expanded state
-  const toggleExpanded = () => {
-    const toValue = isExpanded ? 0 : 1;
+  // const toggleExpanded = () => {
+  //   const toValue = isExpanded ? 0 : 1;
 
-    Animated.spring(slideAnimation, {
-      toValue,
-      friction: 5,
-      tension: 40,
-      useNativeDriver: true,
-    }).start();
+  //   Animated.spring(slideAnimation, {
+  //     toValue,
+  //     friction: 5,
+  //     tension: 40,
+  //     useNativeDriver: true,
+  //   }).start();
 
-    setIsExpanded(!isExpanded);
-  };
+  //   setIsExpanded(!isExpanded);
+  // };
 
   // Navigate to a specific screen
   const navigateTo = (screenName) => {
@@ -173,10 +173,10 @@ const Dashboard = () => {
   };
 
   // Calculate the translation based on animation value
-  const translateY = slideAnimation.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, -100], // Adjust this value based on how much you want it to slide up
-  });
+  // const translateY = slideAnimation.interpolate({
+  //   inputRange: [0, 1],
+  //   outputRange: [0, -100], // Adjust this value based on how much you want it to slide up
+  // });
 
   return (
     <LinearGradient
@@ -270,7 +270,7 @@ const Dashboard = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.homeButton}
-          onPress={toggleExpanded}
+          // onPress={toggleExpanded}
         >
           <LinearGradient
             colors={['red', '#43328B']}
@@ -358,7 +358,6 @@ const styles = StyleSheet.create({
     fontWeight: 'light',
   },
 
-  // Bottom Navigation Styles
   bottomNavContainer: {
     position: 'absolute',
     bottom: 10,
@@ -385,15 +384,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   navIcon: {
-    height: 24,
-    width: 24,
+    height: 28,
+    width: 28,
   },
   homeButton: {
     height: 60,
     width: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 35,
   },
   homeButtonGradient: {
     height: 60,

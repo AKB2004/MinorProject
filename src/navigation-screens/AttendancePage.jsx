@@ -13,18 +13,18 @@ const [slideAnimation] = useState(new Animated.Value(0));
   const [isExpanded, setIsExpanded] = useState(false);
 
   // Toggle the expanded state
-  const toggleExpanded = () => {
-    const toValue = isExpanded ? 0 : 1;
+  // const toggleExpanded = () => {
+  //   const toValue = isExpanded ? 0 : 1;
 
-    Animated.spring(slideAnimation, {
-      toValue,
-      friction: 5,
-      tension: 40,
-      useNativeDriver: true,
-    }).start();
+  //   Animated.spring(slideAnimation, {
+  //     toValue,
+  //     friction: 5,
+  //     tension: 40,
+  //     useNativeDriver: true,
+  //   }).start();
 
-    setIsExpanded(!isExpanded);
-  };
+  //   setIsExpanded(!isExpanded);
+  // };
 
   // Navigate to a specific screen
   const navigateTo = (screenName) => {
@@ -47,7 +47,7 @@ const [slideAnimation] = useState(new Animated.Value(0));
   // Calculate the translation based on animation value
   const translateY = slideAnimation.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, -100], // Adjust this value based on how much you want it to slide up
+    outputRange: [0, 100], // Adjust this value based on how much you want it to slide up
   });
 
   return (
@@ -56,6 +56,18 @@ const [slideAnimation] = useState(new Animated.Value(0));
     locations={[0.01, 1]}
     style={styles.gradient}>
 
+    <View>
+      <Text style={{fontSize:30}}>
+        attendance
+      </Text>
+    </View>
+
+
+
+
+
+
+
 <View style={styles.bottomNavContainer}>
         <TouchableOpacity
           style={styles.navButton}
@@ -63,7 +75,7 @@ const [slideAnimation] = useState(new Animated.Value(0));
         >
             <LinearGradient
             colors={['red', '#43328B']}
-            style={styles.homeButtonGradient}
+            style={styles.attendanceButton}
             borderRadius={30}
           >
           <Image
@@ -83,7 +95,8 @@ const [slideAnimation] = useState(new Animated.Value(0));
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.homeButton}
-          onPress={toggleExpanded}
+          onPress={() => navigateTo('Dashboard')}
+          // onPress={toggleExpanded}
         >
           {/* <LinearGradient
             colors={['red', '#43328B']}
@@ -154,6 +167,16 @@ const styles = StyleSheet.create({
     gap: 20,
     marginLeft: 15,
   },
+  attendanceButton: {
+    height: 60, // Increase height for uplift
+    width: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 30, // Lift icon upwards
+    backgroundColor: '#fff',
+    borderRadius: 30,
+    elevation: 5, // Shadow for a floating effect
+},
   text1: {
     fontSize: 30,
     fontWeight: 'bold',
@@ -207,12 +230,13 @@ const styles = StyleSheet.create({
     width: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 5,
   },
   homeButtonGradient: {
     height: 60,
     width: 60,
     borderRadius: 30,
+
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 5,
@@ -221,6 +245,7 @@ const styles = StyleSheet.create({
     height: 30,
     width: 30,
     tintColor: '#fff',
+    // marginBottom:35,
   },
   // Expandable Panel Styles
   expandablePanel: {
