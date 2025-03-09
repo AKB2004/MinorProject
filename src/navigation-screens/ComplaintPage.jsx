@@ -1,12 +1,15 @@
+
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-import { View, Text, StyleSheet, Image, TouchableOpacity, Animated } from 'react-native';
+
+import { View, Text, StyleSheet, Image, TouchableOpacity, Animated, TextInput,Alert } from 'react-native';
 import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
 
-
+const HandleConfirmButton = ()=>{
+  Alert.alert('Request has been sent.');
+}
 const AttendancePage = () => {
     const navigation = useNavigation();
 const [slideAnimation] = useState(new Animated.Value(0));
@@ -61,6 +64,49 @@ const [slideAnimation] = useState(new Animated.Value(0));
       <View>
         <Text style={styles.texting}>Choose the Service</Text>
       </View>
+      <View style={styles.divisionMange}>
+        <View style={styles.division}>
+          <Image
+          source={require('../../assets/img/electricianicon.png')}
+          style={styles.imageiconsize}/>
+          <Text style={{fontSize:15, color:'#fff', alignSelf:'center'}}>Electrician</Text>
+        </View>
+        <View style={styles.division}>
+        <Image
+          source={require('../../assets/img/furnitureicon.png')}
+          style={styles.imageiconsize}/>
+          <Text style={{fontSize:15, color:'#fff', alignSelf:'center'}}>Furniture</Text>
+        </View>
+        <View style={styles.division}>
+        <Image
+          source={require('../../assets/img/plumbericon.png')}
+          style={styles.imageiconsize}/>
+          <Text style={{fontSize:15, color:'#fff', alignSelf:'center'}}>Plumber</Text>
+        </View>
+        <View style={styles.division}>
+        <Image
+          source={require('../../assets/img/othersicon.png')}
+          style={styles.imageiconsize}/>
+          <Text style={{fontSize:15, color:'#fff', alignSelf:'center'}}>Others</Text>
+        </View>
+      </View>
+      <Text style={{fontSize:25, alignSelf:'center',marginTop:0}}>______________________</Text>
+      <TextInput
+      placeholder="Any further details.."
+      style={styles.input}
+      placeholderTextColor="grey"
+      multiline={true}/>
+      {/* <TouchableOpacity style={styles.button} onPress={handleConfirm}>
+        <Text style={styles.buttonText}>Confirm</Text>
+      </TouchableOpacity> */}
+      <TouchableOpacity
+      style={styles.Confirmbutton}
+      onPress={HandleConfirmButton}>
+      <Text style={styles.buttonText}>
+        Confirm
+      </Text>
+      </TouchableOpacity>
+
 
 <View style={styles.bottomNavContainer}>
         <TouchableOpacity
@@ -153,6 +199,26 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
   },
+  imageiconsize:{
+    width:100,
+    height:100,
+    alignSelf:'center',
+    // resizeMode: 'contain',
+  },
+  division:{
+    backgroundColor:'#43328B',
+    height:130,
+    width:130,
+    borderRadius:25,
+  },
+  divisionMange:{
+    flexDirection:'row',
+    flexWrap:'wrap',
+    gap:30,
+    justifyContent:'center',
+    alignItems:'center',
+    marginTop:30,
+  },
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -167,6 +233,23 @@ const styles = StyleSheet.create({
     gap: 20,
     marginLeft: 15,
   },
+  input: {
+    height: 200,
+    width:300,
+    borderWidth: 1,
+    borderColor: '#6A5ACDdd',
+    borderRadius: 20,
+    paddingHorizontal: 15,
+    marginTop:10,
+    fontSize: 16,
+    alignSelf:'center',
+    // flexDirection:'row',
+    color: 'black',
+    backgroundColor: '#fff',
+    textAlign: 'center',
+    fontWeight:600,
+    textAlignVertical: 'center',
+  },
   complaintButton: {
     height: 60, // Increase height for uplift
     width: 60,
@@ -176,6 +259,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 30,
     elevation: 5, // Shadow for a floating effect
+},
+Confirmbutton: {
+  backgroundColor: '#43328B',
+  paddingVertical: 15,
+  borderRadius: 5,
+  alignItems: 'center',
+  marginTop: 15,
+  width:'60%',
+  alignSelf:'center',
+},
+buttonText: {
+  color: '#fff',
+  fontSize: 18,
+  fontWeight: 500,
 },
   text1: {
     fontSize: 30,
