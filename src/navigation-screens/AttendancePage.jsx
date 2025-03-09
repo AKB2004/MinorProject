@@ -74,7 +74,7 @@ const [slideAnimation] = useState(new Animated.Value(0));
           onPress={() => navigateTo('AttendancePage')}
         >
             <LinearGradient
-            colors={['red', '#43328B']}
+            colors={['#C71585', '#43328B']}
             style={styles.attendanceButton}
             borderRadius={30}
           >

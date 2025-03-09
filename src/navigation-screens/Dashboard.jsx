@@ -273,7 +273,7 @@ const Dashboard = () => {
           // onPress={toggleExpanded}
         >
           <LinearGradient
-            colors={['red', '#43328B']}
+            colors={['#C71585', '#43328B']}
             style={styles.homeButtonGradient}
             borderRadius={30}
           >

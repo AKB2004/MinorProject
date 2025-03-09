@@ -105,7 +105,7 @@ const [slideAnimation] = useState(new Animated.Value(0));
           onPress={() => navigateTo('MessPage')}
         >
           <LinearGradient
-            colors={['red', '#43328B']}
+            colors={['#C71585', '#43328B']}
             style={styles.MessButton}
             borderRadius={30}
           >

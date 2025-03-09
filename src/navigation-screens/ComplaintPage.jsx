@@ -123,7 +123,7 @@ const [slideAnimation] = useState(new Animated.Value(0));
           onPress={() => navigateTo('ComplaintPage')}
         >
           <LinearGradient
-            colors={['red', '#43328B']}
+            colors={['#C71585', '#43328B']}
             style={styles.complaintButton}
             borderRadius={30}
           >

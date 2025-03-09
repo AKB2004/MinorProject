@@ -115,7 +115,7 @@ const [slideAnimation] = useState(new Animated.Value(0));
           onPress={() => navigateTo('FeesPage')}
         >
           <LinearGradient
-            colors={['red', '#43328B']}
+            colors={['#C71585', '#43328B']}
             style={styles.FeesButton}
             borderRadius={30}
           >
