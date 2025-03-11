@@ -226,6 +226,12 @@ const Dashboard = () => {
           </View>
         </View>
       </View>
+      <TouchableOpacity
+      onPress={() => navigation.navigate('PassActivityPage')}>
+      <View style={styles.pass}>
+    <Text style={styles.passtext}>Apply Pass</Text>
+      </View>
+      </TouchableOpacity>
 
       {/* Animated panels */}
       {/* <Animated.View
@@ -309,6 +315,23 @@ const Dashboard = () => {
 const styles = StyleSheet.create({
   gradient: {
     flex: 1,
+  },
+  passtext:{
+    fontSize:25,
+    fontWeight:'bold',
+    color:'white',
+    textAlign:'center',
+    marginTop:20,
+  },
+  pass:{
+    height:80,
+    width:300,
+    backgroundColor:'#43328B',
+    alignSelf:'center',
+    marginTop:45,
+    // paddingLeft:46,
+    // paddingTop:20,
+    borderRadius:20,
   },
   img: {
     height: 70,

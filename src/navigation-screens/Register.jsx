@@ -22,7 +22,7 @@ const Register = () => {
       <Text style={{fontSize:20,marginLeft:20}}>Let's Know about yourself</Text>
       <Image source={require('../../assets/img/signuppagepic.png')} style={styles.img}/>
       <TextInput
-      placeholder="Enter name"
+      placeholder="Enter your name"
       placeholderTextColor="#36454F"
       style={styles.input}/>
       <TextInput
@@ -83,11 +83,12 @@ const styles = StyleSheet.create({
       // alignItems: 'center',
     },
     img:{
-      width:300,
-      height:250,
-      marginLeft:40,
-      marginTop:20,
-      marginBottom:20,
+      width:150,
+      height:150,
+      // alignSelf:'center',
+      marginLeft:110,
+      marginTop:10,
+      marginBottom:10,
     },
     input: {
       width: '89%',

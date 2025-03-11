@@ -21,6 +21,7 @@ import AttendancePage from './src/navigation-screens/AttendancePage';
 import ComplaintPage from './src/navigation-screens/ComplaintPage';
 import MessPage from './src/navigation-screens/MessPage';
 import FeesPage from './src/navigation-screens/FeesPage';
+import PassActivityPage from './src/navigation-screens/PassActivityPage';
 
 
 // import First from './src/navigation-screens/First';
@@ -83,6 +84,11 @@ const App = () => {
         name="FeesPage"
         component={FeesPage}
         options={{headerShown:false}}/>
+        <Stack.Screen
+        name="PassActivityPage"
+        component={PassActivityPage}
+        options={{headerShown:false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
