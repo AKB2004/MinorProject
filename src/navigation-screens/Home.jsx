@@ -66,7 +66,7 @@ logo: {
   marginBottom: 20,
 },
 img: {
-  width:300,
-  height:150,
+  width:100,
+  height:100,
 },
 });
