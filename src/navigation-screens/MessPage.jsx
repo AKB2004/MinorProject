@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Animated } from 'react
 import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 
 
@@ -63,6 +64,39 @@ const [slideAnimation] = useState(new Animated.Value(0));
         <Image
         source={require('../../assets/img/messpic.png')}
         style={styles.messpageimg}/>
+        <View >
+        <View style={styles.horizontalView}>
+        <View style={styles.messtexting}>
+        <Text style={{fontSize:20,fontWeight:'bold'  }}>Breakfast</Text>
+        <Text>Aaloo Paratha, Sandwich, Chai and Dahi,milk</Text>
+        </View>
+        <View style={styles.messtexting1}>
+        <Text style={{fontSize:20, textAlign:'right',fontWeight:'bold' }}>Timings</Text>
+        <Text style={{textAlign:'right'}}>8:00A.M - 9:00A.M</Text>
+        </View>
+        </View>
+        <View style={styles.horizontalView}>
+        <View style={styles.messtexting}>
+        <Text style={{fontSize:20,fontWeight:'bold'  }}>Lunch</Text>
+        <Text>Rajama curry, Roti, Raiyta, Rice and salad</Text>
+        </View>
+        <View style={styles.messtexting1}>
+        {/* <Text style={{fontSize:20,textAlign:'right',fontWeight:'bold' }}>Timings</Text> */}
+        <Text style={{textAlign:'right',paddingTop:30}}>8:00A.M - 9:00A.M</Text>
+        </View>
+        </View>
+        
+        <View style={styles.horizontalView}>
+        <View style={styles.messtexting}>
+        <Text style={{fontSize:20, fontWeight:'bold' }}>Dinner</Text>
+        <Text>Dal, Mix veg, Halwa, Rice and salad</Text>
+        </View>
+        <View style={styles.messtexting1}>
+        {/* <Text style={{fontSize:20,textAlign:'right',fontWeight:'bold' }}>Timings</Text> */}
+        <Text style={{textAlign:'right',paddingTop:30}}>8:00A.M - 9:00A.M</Text>
+        </View>
+        </View>  
+        </View>
       </View>
 
 <View style={styles.bottomNavContainer}>
@@ -134,6 +168,23 @@ const styles = StyleSheet.create({
   gradient: {
     flex: 1,
   },
+  messtexting:{
+    // backgroundColor:'#fff',
+    width:200,
+    height:80,
+  },
+  messtexting1:{
+    // backgroundColor:'#fff',
+    width:200,
+    height:80,
+  },
+  horizontalView:{
+    flex:1,
+    flexDirection:'row',
+    justifyContent:'center',
+    marginBottom:100,
+    // flexWrap:'wrap',
+  },
   texting:{
     fontSize:38,
     marginTop:30,
@@ -141,10 +192,11 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
   },
   messpageimg:{
-    width:250,
-    height:220,
+    width:300,
+    height:200,
     alignSelf:'center',
-    marginTop:10,
+    marginTop:30,
+    marginBottom:40,
   },
   img: {
     height: 70,
