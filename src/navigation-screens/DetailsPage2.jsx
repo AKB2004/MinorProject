@@ -73,8 +73,8 @@ const styles = StyleSheet.create({
   img:{
     alignSelf:'center',
     marginTop:50,
-    width:120,
-    height:150,
+    width:100,
+    height:110,
   },
   text:{
     fontSize:20,

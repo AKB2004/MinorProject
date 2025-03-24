@@ -192,8 +192,8 @@ const Login = () => {
       <View style={styles.container}>
         <Image source={require('../../assets/img/loginpagepic.png')} style={styles.img}/>
 
-        <Text style={{fontSize:30,fontWeight:'bold', marginBottom:5}}>Welcome Back!</Text>
-        <Text style={{fontSize:17,fontWeight:'light',marginBottom:20}}>Please enter your details</Text>
+        <Text style={{fontSize:25,fontWeight:'bold', marginBottom:5}}>Welcome Back!</Text>
+        <Text style={{fontSize:14,fontWeight:'light',marginBottom:20}}>Please enter your details</Text>
 
         {/* User Type Tabs */}
         <View style={styles.tabContainer}>
@@ -306,7 +306,7 @@ const styles = StyleSheet.create({
   },
   tab: {
     flex: 1,
-    paddingVertical: 12,
+    paddingVertical: 10,
     backgroundColor: '#F0F0F0',
     alignItems: 'center',
   },
@@ -328,7 +328,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     marginBottom: 15,
-    height: 55,
+    height: 50,
     backgroundColor: '#F0F0F0',
     fontSize: 16,
   },
@@ -339,13 +339,14 @@ const styles = StyleSheet.create({
     borderColor: '#F0F0F0',
     borderRadius: 10,
     width: '100%',
-    height: 55,
+    height: 50,
     backgroundColor: '#F0F0F0',
   },
   passwordInput: {
     flex: 1,
     padding: 10,
     fontSize: 16,
+    color:'#000',
   },
   eyeIcon: {
     padding: 10,
@@ -372,8 +373,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   img: {
-    width: 300,
-    height: 200,
+    width: 230,
+    height: 150,
     marginTop:-60,
   },
 });

@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   texting:{
-    fontSize:38,
+    fontSize:33,
     fontWeight:'bold',
     marginLeft:20,
     marginTop:40,
@@ -158,8 +158,8 @@ const styles = StyleSheet.create({
     width: 50,
   },
   paymentimg:{
-    width:300,
-    height:300,
+    width:200,
+    height:200,
     alignSelf:'center',
   },
   container: {

@@ -321,10 +321,11 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
     color:'white',
     textAlign:'center',
-    marginTop:20,
+    marginTop:10,
+    // fontFamily: 'monospace',
   },
   pass:{
-    height:80,
+    height:60,
     width:300,
     backgroundColor:'#43328B',
     alignSelf:'center',
@@ -332,6 +333,7 @@ const styles = StyleSheet.create({
     // paddingLeft:46,
     // paddingTop:20,
     borderRadius:20,
+    // paddingBottom:10,
   },
   img: {
     height: 70,
@@ -367,18 +369,22 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     marginLeft: 10,
+    // fontFamily: 'monospace',
   },
   text2: {
     fontSize: 20,
     fontWeight: 'light',
+    // fontFamily: 'monospace',
   },
   text3: {
     fontSize: 19,
     fontWeight: 'bold',
+    // fontFamily: 'monospace',
   },
   text4: {
     fontSize: 19,
     fontWeight: 'light',
+    // fontFamily: 'monospace',
   },
 
   bottomNavContainer: {

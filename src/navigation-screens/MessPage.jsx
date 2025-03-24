@@ -170,13 +170,15 @@ const styles = StyleSheet.create({
   },
   messtexting:{
     // backgroundColor:'#fff',
-    width:200,
+    width:130,
     height:80,
+    fontFamily: 'monospace',
   },
   messtexting1:{
     // backgroundColor:'#fff',
-    width:200,
+    width:130,
     height:80,
+    fontFamily: 'monospace',
   },
   horizontalView:{
     flex:1,
@@ -186,14 +188,15 @@ const styles = StyleSheet.create({
     // flexWrap:'wrap',
   },
   texting:{
-    fontSize:38,
+    fontSize:32,
     marginTop:30,
     marginLeft:20,
     fontWeight:'bold',
+    // fontFamily: 'monospace',
   },
   messpageimg:{
-    width:300,
-    height:200,
+    width:200,
+    height:150,
     alignSelf:'center',
     marginTop:30,
     marginBottom:40,
@@ -242,6 +245,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     marginLeft: 10,
+    // fontFamily: 'monospace',
   },
   text2: {
     fontSize: 20,
