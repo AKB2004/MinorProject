@@ -10,7 +10,8 @@ const WardenDashboard = () => {
     <LinearGradient colors={['#E6E6FA', '#43328B']} locations={[0.01, 1]} style={styles.gradient}
                 >
     <View>
-      <Text style={{fontSize:30}}>WardenDashboard</Text>
+      <Text style={{fontSize:30, marginTop:20}}>WardenDashboard hi</Text>
+
     </View>
     </LinearGradient>
   );
@@ -18,9 +19,7 @@ const WardenDashboard = () => {
 
 const styles = StyleSheet.create({
     gradient: {
-      flex: 1, // Full screen gradient
-      // justifyContent: 'center',
-      // alignItems: 'center',
+      flex: 1,
     },
 });
 
