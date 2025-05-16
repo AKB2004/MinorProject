@@ -454,21 +454,18 @@ const PassActivityPage = () => {
                 placeholderTextColor="#36454F"
                 style={styles.input}/>
                 <TextInput
-                placeholder="Enter email ID"
+                placeholder="Emergency Contact"
                 placeholderTextColor="#36454F"
                 style={styles.input}/>
                 <TextInput
-                placeholder="Contact Number"
+                placeholder="Leaving Date"
                 placeholderTextColor="#36454F"
                 style={styles.input}/>
                 <TextInput
-                placeholder="Parent's Name"
+                placeholder="Return Date"
                 placeholderTextColor="#36454F"
                 style={styles.input}/>
-                <TextInput
-                placeholder="Parent's Number"
-                placeholderTextColor="#36454F"
-                style={styles.input}/>
+                
             <TouchableOpacity
             style={styles.button1}
             onPress={()=>{

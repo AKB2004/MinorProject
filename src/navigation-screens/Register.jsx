@@ -68,7 +68,7 @@ const Register = () => {
     </View>
     <TouchableOpacity
      style={styles.button1}
-     onPress={() => navigation.navigate('Details')}>
+     onPress={() => navigation.navigate('DetailsPage2')}>
       <Text style={styles.buttonText}>Authenticate</Text>
       </TouchableOpacity>
     </LinearGradient>
