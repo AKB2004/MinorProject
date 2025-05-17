@@ -22,6 +22,8 @@ import ComplaintPage from './src/navigation-screens/ComplaintPage';
 import MessPage from './src/navigation-screens/MessPage';
 import FeesPage from './src/navigation-screens/FeesPage';
 import PassActivityPage from './src/navigation-screens/PassActivityPage';
+import BookingSlot from './src/navigation-screens/BookingSlot';
+
 
 
 // import First from './src/navigation-screens/First';
@@ -87,6 +89,11 @@ const App = () => {
         <Stack.Screen
         name="PassActivityPage"
         component={PassActivityPage}
+        options={{headerShown:false}}
+        />
+        <Stack.Screen
+        name="BookingSlot"
+        component={BookingSlot}
         options={{headerShown:false}}
         />
       </Stack.Navigator>

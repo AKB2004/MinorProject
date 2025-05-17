@@ -134,6 +134,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Animated} from 'react-
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
+
 const Dashboard = () => {
   const navigation = useNavigation();
   // Animation state
@@ -232,6 +233,14 @@ const Dashboard = () => {
     <Text style={styles.passtext}>Apply Pass</Text>
       </View>
       </TouchableOpacity>
+      <TouchableOpacity
+      onPress={() => navigation.navigate('BookingSlot')}>
+      <View style={styles.pass}>
+        <Text style={styles.passtext}>
+          Room Booking
+        </Text>
+      </View>
+      </TouchableOpacity>
 
       {/* Animated panels */}
       {/* <Animated.View
@@ -321,7 +330,7 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
     color:'white',
     textAlign:'center',
-    marginTop:10,
+    marginTop:15,
     // fontFamily: 'monospace',
   },
   pass:{
