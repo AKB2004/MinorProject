@@ -618,3 +618,277 @@ const styles = StyleSheet.create({
 });
 
 export default AttendancePage;
+
+
+
+
+
+//this is vivek backend intergration code
+
+
+// import { View, Text, StyleSheet, Image, TouchableOpacity, Animated, TextInput, Alert, ScrollView } from 'react-native';
+// import React, { useState } from 'react';
+// import LinearGradient from 'react-native-linear-gradient';
+// import { useNavigation } from '@react-navigation/native';
+// import axios from 'axios';
+
+// // Configure axios defaults
+// axios.defaults.headers.common['Content-Type'] = 'application/json';
+// axios.defaults.headers.common['Accept'] = 'application/json';
+
+// const BACKEND_URL = 'http://10.0.2.2:8080/api/complaints/';
+
+// const icons = {
+//   ELECTRICIAN: require('../../assets/img/electricianicon.png'),
+//   FURNITURE:   require('../../assets/img/furnitureicon.png'),
+//   PLUMBER:     require('../../assets/img/plumbericon.png'),
+//   OTHERS:      require('../../assets/img/othersicon.png'),
+// };
+
+// const ComplaintPage = () => {
+//   const navigation = useNavigation();
+//   const [slideAnimation] = useState(new Animated.Value(0));
+//   const [isExpanded, setIsExpanded] = useState(false);
+//   const [isSubmitting, setIsSubmitting] = useState(false);
+
+//   const [roomNumber, setRoomNumber] = useState('');
+//   const [description, setDescription] = useState('');
+//   const [selectedCategory, setSelectedCategory] = useState(null);
+
+//   const HandleConfirmButton = async () => {
+//     if (!selectedCategory) {
+//       return Alert.alert('Error', 'Please select a service category.');
+//     }
+//     if (!roomNumber.trim()) {
+//       return Alert.alert('Error', 'Please enter your room number.');
+//     }
+//     if (!description.trim()) {
+//       return Alert.alert('Error', 'Please add some details.');
+//     }
+
+//     setIsSubmitting(true);
+//     console.log('Sending request to:', BACKEND_URL);
+//     console.log('Request payload:', {
+//       category: selectedCategory,
+//       roomNumber: roomNumber.trim(),
+//       description: description.trim(),
+//     });
+
+//     try {
+//       const response = await axios.post(
+//         BACKEND_URL,
+//         {
+//           category: selectedCategory,
+//           roomNumber: roomNumber.trim(),
+//           description: description.trim(),
+//         },
+//         { timeout: 10000 } // 10s timeout
+//       );
+
+//       console.log('Response received:', response.data);
+
+//       Alert.alert(
+//         'Success',
+//         Complaint #${response.data.id} has been submitted successfully!,
+//         [{
+//           text: 'OK',
+//           onPress: () => {
+//             setSelectedCategory(null);
+//             setRoomNumber('');
+//             setDescription('');
+//           }
+//         }]
+//       );
+//     } catch (error) {
+//       console.error('Error details:', {
+//         message: error.message,
+//         response: error.response?.data,
+//         status: error.response?.status
+//       });
+
+//       let errorMessage = 'Failed to submit complaint. ';
+//       if (error.response) {
+//         errorMessage += Server error: ${error.response.data || error.response.statusText};
+//       } else if (error.request) {
+//         errorMessage += 'No response from server. Please check your connection.';
+//       } else {
+//         errorMessage += error.message;
+//       }
+
+//       Alert.alert('Error', errorMessage);
+//     } finally {
+//       setIsSubmitting(false);
+//     }
+//   };
+
+//   const navigateTo = (screenName) => {
+//     if (isExpanded) {
+//       Animated.spring(slideAnimation, {
+//         toValue: 0,
+//         friction: 5,
+//         tension: 40,
+//         useNativeDriver: true,
+//       }).start(() => setIsExpanded(false));
+//     }
+//     navigation.navigate(screenName);
+//   };
+
+//   return (
+//     <LinearGradient colors={['#E6E6FA', '#43328B']} locations={[0.01, 1]} style={styles.gradient}>
+//       <ScrollView contentContainerStyle={styles.scrollContainer}>
+//         <Text style={styles.texting}>Choose the Service</Text>
+
+//         <View style={styles.divisionMange}>
+//           {Object.entries(icons).map(([key, src]) => {
+//             const isSelected = selectedCategory === key;
+//             const label = key.charAt(0) + key.slice(1).toLowerCase();
+//             return (
+//               <TouchableOpacity
+//                 key={key}
+//                 style={[
+//                   styles.categoryContainer,
+//                   isSelected && styles.categoryContainerSelected,
+//                 ]}
+//                 onPress={() => setSelectedCategory(key)}
+//                 activeOpacity={0.8}
+//               >
+//                 <Image source={src} style={styles.imageiconsize} />
+//                 <Text style={styles.serviceText}>{label}</Text>
+//               </TouchableOpacity>
+//             );
+//           })}
+//         </View>
+
+//         <TextInput
+//           placeholder="Enter Room Number"
+//           placeholderTextColor="#36454F"
+//           style={[styles.passwordInput, { backgroundColor: '#fff', marginHorizontal: 40, marginVertical: 5 }]}
+//           value={roomNumber}
+//           onChangeText={setRoomNumber}
+//         />
+
+//         <Text style={styles.divider}></Text>
+
+//         <TextInput
+//           placeholder="Any further details.."
+//           placeholderTextColor="grey"
+//           style={styles.input}
+//           multiline
+//           value={description}
+//           onChangeText={setDescription}
+//         />
+
+//         <TouchableOpacity
+//           style={[
+//             styles.Confirmbutton,
+//             isSubmitting && styles.ConfirmbuttonDisabled
+//           ]}
+//           onPress={HandleConfirmButton}
+//           disabled={isSubmitting}
+//         >
+//           <Text style={styles.buttonText}>
+//             {isSubmitting ? 'Submitting...' : 'Confirm'}
+//           </Text>
+//         </TouchableOpacity>
+//       </ScrollView>
+
+//       <View style={styles.bottomNavContainer}>
+//         {/* Bottom nav here */}
+//       </View>
+//     </LinearGradient>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   gradient: { flex: 1 },
+//   scrollContainer: { flexGrow: 1, paddingBottom: 120 },
+//   texting: { fontSize: 30, fontWeight: 'bold', marginTop: 30, alignSelf: 'center' },
+
+//   divisionMange: {
+//     flexDirection: 'row',
+//     flexWrap: 'wrap',
+//     gap: 30,
+//     justifyContent: 'center',
+//     alignItems: 'flex-start',
+//     marginTop: 30,
+//   },
+//   categoryContainer: {
+//     width: 130,
+//     alignItems: 'center',
+//     padding: 8,
+//     borderRadius: 10,
+//     backgroundColor: 'rgba(255, 255, 255, 0.1)',
+//   },
+//   categoryContainerSelected: {
+//     borderWidth: 2,
+//     borderColor: '#fff',
+//     backgroundColor: '#6A5ACD55',
+//   },
+//   imageiconsize: {
+//     width: 100,
+//     height: 100,
+//     alignSelf: 'center',
+//   },
+//   serviceText: {
+//     fontSize: 15,
+//     color: '#fff',
+//     alignSelf: 'center',
+//     marginTop: 4,
+//   },
+
+//   passwordInput: {
+//     flex: 1,
+//     padding: 10,
+//     fontSize: 16,
+//     color: '#000',
+//   },
+//   divider: { fontSize: 25, alignSelf: 'center', marginTop: 0 },
+
+//   input: {
+//     height: 200,
+//     width: 300,
+//     borderWidth: 1,
+//     borderColor: '#6A5ACDdd',
+//     borderRadius: 20,
+//     paddingHorizontal: 15,
+//     marginTop: 10,
+//     fontSize: 16,
+//     alignSelf: 'center',
+//     color: 'black',
+//     backgroundColor: '#fff',
+//     textAlign: 'center',
+//     fontWeight: '600',
+//     textAlignVertical: 'center',
+//   },
+
+//   Confirmbutton: {
+//     backgroundColor: '#43328B',
+//     paddingVertical: 15,
+//     borderRadius: 5,
+//     alignItems: 'center',
+//     marginTop: 15,
+//     width: '60%',
+//     alignSelf: 'center',
+//   },
+//   ConfirmbuttonDisabled: {
+//     backgroundColor: '#6A5ACD',
+//     opacity: 0.7,
+//   },
+//   buttonText: { color: '#fff', fontSize: 18, fontWeight: '500' },
+
+//   bottomNavContainer: {
+//     position: 'absolute',
+//     bottom: 0,
+//     left: 0,
+//     right: 0,
+//     height: 90,
+//     backgroundColor: '#43328B',
+//     flexDirection: 'row',
+//     justifyContent: 'space-around',
+//     alignItems: 'center',
+//     paddingHorizontal: 8,
+//     elevation: 10,
+//   },
+// });
+
+// export default ComplaintPage;
