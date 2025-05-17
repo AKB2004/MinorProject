@@ -130,7 +130,7 @@
 
 
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Animated } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Animated} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
@@ -317,7 +317,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   passtext:{
-    fontSize:25,
+    fontSize:20,
     fontWeight:'bold',
     color:'white',
     textAlign:'center',
@@ -326,7 +326,7 @@ const styles = StyleSheet.create({
   },
   pass:{
     height:60,
-    width:300,
+    width:200,
     backgroundColor:'#43328B',
     alignSelf:'center',
     marginTop:45,
@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
   },
   text1: {
     fontSize: 30,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     marginLeft: 10,
     // fontFamily: 'monospace',
   },

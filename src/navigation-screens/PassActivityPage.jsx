@@ -451,19 +451,19 @@ const PassActivityPage = () => {
                 {/* <Image source={require('../../assets/img/signuppagepic.png')} style={styles.img}/> */}
                 <TextInput
                 placeholder="Enter your Name"
-                placeholderTextColor="#36454F"
+                placeholderTextColor="#ced4da"
                 style={styles.input}/>
                 <TextInput
                 placeholder="Emergency Contact"
-                placeholderTextColor="#36454F"
+                placeholderTextColor="#ced4da"
                 style={styles.input}/>
                 <TextInput
                 placeholder="Leaving Date"
-                placeholderTextColor="#36454F"
+                placeholderTextColor="#ced4da"
                 style={styles.input}/>
                 <TextInput
                 placeholder="Return Date"
-                placeholderTextColor="#36454F"
+                placeholderTextColor="#ced4da"
                 style={styles.input}/>
                 
             <TouchableOpacity
@@ -505,7 +505,7 @@ const styles = StyleSheet.create({
     marginBottom:10,
   },
   input: {
-    width: '360',
+    width: '88%',
     borderWidth: 1,
     borderColor: 'grey',
     padding: 10,
@@ -515,7 +515,8 @@ const styles = StyleSheet.create({
     marginTop:15,
     backgroundColor: 'white',
     marginLeft:20,
-    fontSize:20,
+    fontSize:14,
+    color:'black',
     // marginTop:30,
   },
   button: {

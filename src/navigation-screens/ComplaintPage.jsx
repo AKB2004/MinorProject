@@ -502,7 +502,7 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flexGrow: 1,
-    paddingBottom: 120,
+    paddingBottom: 500,
   },
   texting: {
     fontSize: 30,

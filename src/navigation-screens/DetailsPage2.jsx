@@ -16,25 +16,25 @@ const DetailsPage2 = () => {
     >
       <View>
         <Text style={styles.title}>Personal Details</Text>
-        <Text style={styles.subtitle}>Let's Know about yourself</Text>
+        <Text style={styles.subtitle}>Let us know about you</Text>
         <Image source={require('../../assets/img/profileicon.png')} style={styles.img} />
       </View>
 
       <View>
         <TextInput
           placeholder="Enter Guardian Name"
-          placeholderTextColor="#36454F"
+          placeholderTextColor="#ced4da"
           style={styles.input}
         />
         <TextInput
           placeholder="Enter Guardian Number"
-          placeholderTextColor="#36454F"
+          placeholderTextColor="#ced4da"
           style={styles.input}
           keyboardType="phone-pad"
         />
         <TextInput
           placeholder="Enter Guardian Email"
-          placeholderTextColor="#36454F"
+          placeholderTextColor="#ced4da"
           style={styles.input}
           keyboardType="email-address"
         />
@@ -44,8 +44,8 @@ const DetailsPage2 = () => {
           onPress={() => setProfessionModalVisible(true)}
           style={styles.input}
         >
-          <Text style={[styles.professionText, { color: selectedProfession ? '#000' : '#36454F' }]}>
-            {selectedProfession || 'Enter Profession'}
+          <Text style={[styles.professionText, { color: selectedProfession ? '#000' : '#ced4da' }]}>
+            {selectedProfession || 'Your Profession'}
           </Text>
         </TouchableOpacity>
 
@@ -53,13 +53,13 @@ const DetailsPage2 = () => {
         {selectedProfession === 'Student' && (
           <>
             <TextInput
-              placeholder="Student College Name"
-              placeholderTextColor="#36454F"
+              placeholder="College Name"
+              placeholderTextColor="#ced4da"
               style={styles.input}
             />
             <TextInput
               placeholder="College Address"
-              placeholderTextColor="#36454F"
+              placeholderTextColor="#ced4da"
               style={styles.input}
             />
           </>
@@ -69,12 +69,12 @@ const DetailsPage2 = () => {
           <>
             <TextInput
               placeholder="Company Name"
-              placeholderTextColor="#36454F"
+              placeholderTextColor="#ced4da"
               style={styles.input}
             />
             <TextInput
               placeholder="Company Address"
-              placeholderTextColor="#36454F"
+              placeholderTextColor="#ced4da"
               style={styles.input}
             />
           </>
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   },
   img: {
     alignSelf: 'center',
-    marginTop: 50,
+    marginTop: 10,
     width: 100,
     height: 110,
   },
@@ -159,16 +159,17 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     padding: 10,
     borderRadius: 10,
-    marginBottom: 8,
+    marginBottom: 3,
     height: 55,
     marginTop: 5,
     marginLeft: 30,
     backgroundColor: 'white',
-    fontSize: 20,
+    fontSize: 14,
+    color:'black',
     justifyContent: 'center',
   },
   professionText: {
-    fontSize: 20,
+    fontSize: 14,
   },
   modalContainer: {
     flex: 1,
@@ -205,7 +206,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 10,
     width: 200,
-    marginTop: -120,
+    marginTop: -50,
   },
   buttonText: {
     color: 'white',
