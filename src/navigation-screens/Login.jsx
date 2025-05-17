@@ -227,7 +227,7 @@ const Login = () => {
         {/* Username Input */}
         <TextInput
           placeholder="Username"
-          placeholderTextColor="#36454F"
+          placeholderTextColor="#ced4da"
           style={styles.input}
           value={username}
           onChangeText={setUsername}
@@ -237,7 +237,7 @@ const Login = () => {
         <View style={styles.passwordContainer}>
           <TextInput
             placeholder="Password"
-            placeholderTextColor="#36454F"
+            placeholderTextColor="#ced4da"
             style={styles.passwordInput}
             secureTextEntry={!showPassword} // Hide/show password
             value={password}
@@ -330,6 +330,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     height: 50,
     backgroundColor: '#F0F0F0',
+    color:'black',
     fontSize: 16,
   },
   passwordContainer: {
