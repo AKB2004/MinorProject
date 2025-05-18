@@ -120,10 +120,10 @@ const [slideAnimation] = useState(new Animated.Value(0));
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.navButton}
-          onPress={() => navigateTo('FeesPage')}
+          onPress={() => navigateTo('MessagingPage')}
         >
           <Image
-            source={require('../../assets/img/feeBOTTOMicon.png')}
+            source={require('../../assets/img/message.png')}
             style={styles.navIcon}
           />
         </TouchableOpacity>
@@ -228,9 +228,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   navIcon: {
-    height: 24,
-    width: 24,
+    height: 28,
+    width: 28,
   },
+  // navIcon1: {
+  //   height: 26,
+  //   width: 28,
+  // },
   homeButton: {
     height: 60,
     width: 60,

@@ -1,103 +1,35 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-import { View, Text, StyleSheet, Image, TouchableOpacity, Animated } from 'react-native';
-import React, {useState} from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Animated, TextInput, Alert, ScrollView } from 'react-native';
+import React, { useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-
-
-const AttendancePage = () => {
+const MessagingPage = () => {
     const navigation = useNavigation();
 const [slideAnimation] = useState(new Animated.Value(0));
   const [isExpanded, setIsExpanded] = useState(false);
-
-  // Toggle the expanded state
-  // const toggleExpanded = () => {
-  //   const toValue = isExpanded ? 0 : 1;
-
-  //   Animated.spring(slideAnimation, {
-  //     toValue,
-  //     friction: 5,
-  //     tension: 40,
-  //     useNativeDriver: true,
-  //   }).start();
-
-  //   setIsExpanded(!isExpanded);
-  // };
-
-  // Navigate to a specific screen
-  const navigateTo = (screenName) => {
-    // Close the panel if it's open
-    if (isExpanded) {
-      Animated.spring(slideAnimation, {
-        toValue: 0,
-        friction: 5,
-        tension: 40,
-        useNativeDriver: true,
-      }).start(() => {
-        setIsExpanded(false);
-      });
-    }
-
-    // Navigate to the screen
-    navigation.navigate(screenName);
-  };
-
-  // Calculate the translation based on animation value
-  const translateY = slideAnimation.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, 100], // Adjust this value based on how much you want it to slide up
-  });
-
+    const navigateTo = (screenName) => {
+        // Close the panel if it's open
+        if (isExpanded) {
+          Animated.spring(slideAnimation, {
+            toValue: 0,
+            friction: 5,
+            tension: 40,
+            useNativeDriver: true,
+          }).start(() => {
+            setIsExpanded(false);
+          });
+        }
+    
+        // Navigate to the screen
+        navigation.navigate(screenName);
+      };
   return (
-    <LinearGradient
-    colors={['#E6E6FA', '#43328B']}
-    locations={[0.01, 1]}
-    style={styles.gradient}>
-
-
-
-      <View>
-        <Text style={styles.texting}>Today's Menu</Text>
-        <Image
-        source={require('../../assets/img/messpic.png')}
-        style={styles.messpageimg}/>
-        <View >
-        <View style={styles.horizontalView}>
-        <View style={styles.messtexting}>
-        <Text style={{fontSize:20,fontWeight:'bold'  }}>Breakfast</Text>
-        <Text>Aaloo Paratha, Sandwich, Chai and Dahi,milk</Text>
-        </View>
-        <View style={styles.messtexting1}>
-        <Text style={{fontSize:20, textAlign:'right',fontWeight:'bold' }}>Timings</Text>
-        <Text style={{textAlign:'right'}}>8:00A.M - 9:00A.M</Text>
-        </View>
-        </View>
-        <View style={styles.horizontalView}>
-        <View style={styles.messtexting}>
-        <Text style={{fontSize:20,fontWeight:'bold'  }}>Lunch</Text>
-        <Text>Rajama curry, Roti, Raiyta, Rice and salad</Text>
-        </View>
-        <View style={styles.messtexting1}>
-        {/* <Text style={{fontSize:20,textAlign:'right',fontWeight:'bold' }}>Timings</Text> */}
-        <Text style={{textAlign:'right',paddingTop:30}}>8:00A.M - 9:00A.M</Text>
-        </View>
-        </View>
-        
-        <View style={styles.horizontalView}>
-        <View style={styles.messtexting}>
-        <Text style={{fontSize:20, fontWeight:'bold' }}>Dinner</Text>
-        <Text>Dal, Mix veg, Halwa, Rice and salad</Text>
-        </View>
-        <View style={styles.messtexting1}>
-        {/* <Text style={{fontSize:20,textAlign:'right',fontWeight:'bold' }}>Timings</Text> */}
-        <Text style={{textAlign:'right',paddingTop:30}}>8:00A.M - 9:00A.M</Text>
-        </View>
-        </View>  
-        </View>
-      </View>
+    <LinearGradient colors={['#E6E6FA', '#43328B']} locations={[0.01, 1]} style={styles.gradient}>
+          <ScrollView contentContainerStyle={styles.scrollContainer}>
+    <View>
+      <Text>MessagingPage</Text>
+    </View>
+    </ScrollView>
 
 <View style={styles.bottomNavContainer}>
         <TouchableOpacity
@@ -138,68 +70,39 @@ const [slideAnimation] = useState(new Animated.Value(0));
           style={styles.navButton}
           onPress={() => navigateTo('MessPage')}
         >
-          <LinearGradient
-            colors={['#C71585', '#43328B']}
-            style={styles.MessButton}
-            borderRadius={30}
-          >
           <Image
             source={require('../../assets/img/messBOTTOMicon.png')}
             style={styles.navIcon}
           />
-          </LinearGradient>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.navButton}
           onPress={() => navigateTo('MessagingPage')}
         >
+          <LinearGradient
+            colors={['#C71585', '#43328B']}
+            style={styles.FeesButton}
+            borderRadius={30}
+          >
           <Image
             source={require('../../assets/img/message.png')}
             style={styles.navIcon}
           />
+          </LinearGradient>
         </TouchableOpacity>
       </View>
-
-    </LinearGradient>
-);
-};
-
+        </LinearGradient>
+      );
+    };
 const styles = StyleSheet.create({
   gradient: {
     flex: 1,
   },
-  messtexting:{
-    // backgroundColor:'#fff',
-    width:130,
-    height:80,
-    fontFamily: 'monospace',
-  },
-  messtexting1:{
-    // backgroundColor:'#fff',
-    width:130,
-    height:80,
-    fontFamily: 'monospace',
-  },
-  horizontalView:{
-    flex:1,
-    flexDirection:'row',
-    justifyContent:'center',
-    marginBottom:100,
-    // flexWrap:'wrap',
-  },
   texting:{
-    fontSize:32,
-    marginTop:30,
-    marginLeft:20,
+    fontSize:33,
     fontWeight:'bold',
-    // fontFamily: 'monospace',
-  },
-  messpageimg:{
-    width:200,
-    height:150,
-    alignSelf:'center',
-    marginTop:30,
-    marginBottom:40,
+    marginLeft:20,
+    marginTop:40,
   },
   img: {
     height: 70,
@@ -217,6 +120,11 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
   },
+  paymentimg:{
+    width:200,
+    height:200,
+    alignSelf:'center',
+  },
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -231,7 +139,7 @@ const styles = StyleSheet.create({
     gap: 20,
     marginLeft: 15,
   },
-  MessButton: {
+  FeesButton: {
     height: 60, // Increase height for uplift
     width: 60,
     justifyContent: 'center',
@@ -245,7 +153,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     marginLeft: 10,
-    // fontFamily: 'monospace',
   },
   text2: {
     fontSize: 20,
@@ -351,5 +258,4 @@ const styles = StyleSheet.create({
   // },
 });
 
-
-export default AttendancePage;
+export default MessagingPage;

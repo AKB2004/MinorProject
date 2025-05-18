@@ -23,6 +23,8 @@ import MessPage from './src/navigation-screens/MessPage';
 import FeesPage from './src/navigation-screens/FeesPage';
 import PassActivityPage from './src/navigation-screens/PassActivityPage';
 import BookingSlot from './src/navigation-screens/BookingSlot';
+import MessagingPage from './src/navigation-screens/MessagingPage';
+
 
 
 
@@ -94,6 +96,11 @@ const App = () => {
         <Stack.Screen
         name="BookingSlot"
         component={BookingSlot}
+        options={{headerShown:false}}
+        />
+        <Stack.Screen
+        name="MessagingPage"
+        component={MessagingPage}
         options={{headerShown:false}}
         />
       </Stack.Navigator>

@@ -227,6 +227,7 @@ const Dashboard = () => {
           </View>
         </View>
       </View>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-around', margin: 10 }}>
       <TouchableOpacity
       onPress={() => navigation.navigate('PassActivityPage')}>
       <View style={styles.pass}>
@@ -241,7 +242,7 @@ const Dashboard = () => {
         </Text>
       </View>
       </TouchableOpacity>
-
+</View>
       {/* Animated panels */}
       {/* <Animated.View
         style={[
@@ -309,10 +310,10 @@ const Dashboard = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.navButton}
-          onPress={() => navigateTo('FeesPage')}
+          onPress={() => navigateTo('MessagingPage')}
         >
           <Image
-            source={require('../../assets/img/feeBOTTOMicon.png')}
+            source={require('../../assets/img/message.png')}
             style={styles.navIcon}
           />
         </TouchableOpacity>
@@ -335,11 +336,12 @@ const styles = StyleSheet.create({
   },
   pass:{
     height:60,
-    width:200,
+    width:'auto',
     backgroundColor:'#43328B',
     alignSelf:'center',
     marginTop:45,
-    // paddingLeft:46,
+    paddingLeft:20,
+    paddingRight:20,
     // paddingTop:20,
     borderRadius:20,
     // paddingBottom:10,
