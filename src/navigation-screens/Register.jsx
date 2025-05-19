@@ -23,16 +23,16 @@ const Register = () => {
       <Image source={require('../../assets/img/signuppagepic.png')} style={styles.img}/>
       <TextInput
       placeholder="Enter your name"
-      placeholderTextColor="#36454F"
+      placeholderTextColor="#ced4da"
       style={styles.input}/>
       <TextInput
       placeholder="Enter email ID"
-      placeholderTextColor="#36454F"
+      placeholderTextColor="#ced4da"
       style={styles.input}/>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
     <TextInput
       placeholder="Contact Number"
-      placeholderTextColor="#36454F"
+      placeholderTextColor="#ced4da"
       style={[styles.input1, { flex: 1 }]}
     />
     <TouchableOpacity
@@ -45,12 +45,12 @@ const Register = () => {
   </View>
   <TextInput
     placeholder="Enter OTP"
-    placeholderTextColor="#36454F"
+    placeholderTextColor="#ced4da"
     style={styles.input}/>
     <View style={styles.passwordContainer}>
     <TextInput
     placeholder="Enter Password"
-    placeholderTextColor="#36454F"
+    placeholderTextColor="#ced4da"
     style={styles.passwordInput}
     secureTextEntry={!showPassword}
     value={password}
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
       marginTop:10,
       backgroundColor: 'white',
       marginLeft:20,
-      fontSize:20,
+      fontSize:14,
       // marginTop:30,
     },
     input1: {
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
       marginTop:10,
       backgroundColor: 'white',
       marginLeft:20,
-      fontSize:20,
+      fontSize:14,
       // marginTop:30,
     },
     button: {
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     passwordInput: {
       flex: 1,
       padding: 10,
-      fontSize:20,
+      fontSize:14,
     },
 });
 export default Register;
