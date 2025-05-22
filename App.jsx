@@ -24,6 +24,11 @@ import FeesPage from './src/navigation-screens/FeesPage';
 import PassActivityPage from './src/navigation-screens/PassActivityPage';
 import BookingSlot from './src/navigation-screens/BookingSlot';
 import MessagingPage from './src/navigation-screens/MessagingPage';
+import WardenPass from './src/navigation-screens/WardenPass';
+import WardenAttendance from './src/navigation-screens/WardenAttendance';
+import WardenSlot from './src/navigation-screens/WardenSlot';
+import WardenMessage from './src/navigation-screens/WardenMessage';
+import WardenComplain from './src/navigation-screens/WardenComplain';
 
 
 
@@ -101,6 +106,31 @@ const App = () => {
         <Stack.Screen
         name="MessagingPage"
         component={MessagingPage}
+        options={{headerShown:false}}
+        />
+        <Stack.Screen
+        name="WardenPass"
+        component={WardenPass}
+        options={{headerShown:false}}
+        />
+        <Stack.Screen
+        name="WardenSlot"
+        component={WardenSlot}
+        options={{headerShown:false}}
+        />
+        <Stack.Screen
+        name="WardenAttendance"
+        component={WardenAttendance}
+        options={{headerShown:false}}
+        />
+        <Stack.Screen
+        name="WardenComplain"
+        component={WardenComplain}
+        options={{headerShown:false}}
+        />
+        <Stack.Screen
+        name="WardenMessage"
+        component={WardenMessage}
         options={{headerShown:false}}
         />
       </Stack.Navigator>

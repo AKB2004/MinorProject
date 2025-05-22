@@ -1,559 +1,147 @@
-// import { View, Text, StyleSheet } from 'react-native';
-// import React from 'react';
-// import LinearGradient from 'react-native-linear-gradient';
-
-// const PassActivityPage = () => {
-//   return (
-//     <LinearGradient
-//               colors={['#E6E6FA', '#43328B']}
-//               locations={[0.01, 1]}
-//               style={styles.gradient}
-//             >
-//                 <Text style={styles.passActivity}>
-//                     1 Day 
-//                 </Text>
-//             </LinearGradient>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//     gradient:{
-//         flex:1,
-//     },
-// });
-// export default PassActivityPage;
-
-
-
-// import React, { useState } from 'react';
-// import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
-// import LinearGradient from 'react-native-linear-gradient';
-// import { useNavigation } from '@react-navigation/native';
-
-// const PassActivityPage = () => {
-//   const navigation = useNavigation();
-//   const [selectedPass, setSelectedPass] = useState(null);
-//   const [step, setStep] = useState(1);
-
-//   const handleSelectPass = (passType) => {
-//     setSelectedPass(passType);
-//     setStep(2);
-//   };
-
-//   const handleConfirm = () => {
-//     if (selectedPass) {
-//       console.log(`Selected pass: ${selectedPass}`);
-
-//       // Navigation logic
-//     }
-//   };
-
-//   return (
-//     <LinearGradient
-//       colors={['#E6E6FA', '#43328B']}
-//       locations={[0.01, 1]}
-//       style={styles.gradient}
-//     >
-//       <View style={styles.container}>
-//         <View style={styles.header}>
-//           <TouchableOpacity 
-//             onPress={() => navigation.goBack()}
-//             style={styles.backButton}
-//           >
-//           </TouchableOpacity>
-//           <Text style={styles.headerText}>Apply Pass</Text>
-//         </View>
-        
-//         <View style={styles.timeline}>
-//           <View style={[styles.timelineItem, styles.activeTimelineItem]}>
-//             <Text style={styles.timelineNumber}>1</Text>
-//             <Text style={styles.timelineText}>Select Pass</Text>
-//           </View>
-//           <View style={styles.timelineConnector} />
-//           <View style={[styles.timelineItem, step >= 2 && styles.activeTimelineItem]}>
-//             <Text style={styles.timelineNumber}>2</Text>
-//             <Text style={styles.timelineText}>Confirm</Text>
-//           </View>
-//           <View style={styles.timelineConnector} />
-//           <View style={styles.timelineItem}>
-//             <Text style={styles.timelineNumber}>3</Text>
-//             <Text style={styles.timelineText}>Submit</Text>
-//           </View>
-//         </View>
-        
-//         <ScrollView style={styles.content}>
-//           {step === 1 ? (
-//             <View style={styles.passSelection}>
-//               <Text style={styles.sectionTitle}>Select Pass Type</Text>
-              
-//               <TouchableOpacity
-//                 style={styles.passOption}
-//                 onPress={() => handleSelectPass('oneDay')}
-//               >
-//                 <LinearGradient
-//                   colors={['#4B3A9F', '#43328B']}
-//                   style={styles.passGradient}
-//                 >
-//                   <View style={styles.passDetails}>
-//                     <Image 
-//                       source={require('../../assets/img/maleicon.png')} 
-//                       style={styles.passIcon}
-//                     />
-//                     <View>
-//                       <Text style={styles.passTitle}>One Day Pass</Text>
-//                       <Text style={styles.passDescription}>Day outing permission</Text>
-//                     </View>
-//                   </View>
-//                   <View style={styles.arrowContainer}>
-//                     <Text style={styles.arrowText}>→</Text>
-//                   </View>
-//                 </LinearGradient>
-//               </TouchableOpacity>
-//               <TouchableOpacity
-//                 style={styles.passOption}
-//                 onPress={() => handleSelectPass('home')}
-//               >
-//                 <LinearGradient
-//                   colors={['#C71585', '#A01065']}
-//                   style={styles.passGradient}
-//                 >
-//                   <View style={styles.passDetails}>
-//                     <Image
-//                       source={require('../../assets/img/maleicon.png')} 
-//                       style={styles.passIcon}
-//                     />
-//                     <View>
-//                       <Text style={styles.passTitle}>Home Pass</Text>
-//                       <Text style={styles.passDescription}>Multiple day home visit</Text>
-//                     </View>
-//                   </View>
-//                   <View style={styles.arrowContainer}>
-//                     <Text style={styles.arrowText}>→</Text>
-//                   </View>
-//                 </LinearGradient>
-//               </TouchableOpacity>
-//             </View>
-//           ) : (
-//             <View style={styles.confirmSection}>
-//               <Text style={styles.sectionTitle}>Confirm Your Selection</Text>
-              
-//               <View style={styles.selectedPassContainer}>
-//                 <LinearGradient
-//                   colors={selectedPass === 'oneDay' ? ['#4B3A9F', '#43328B'] : ['#C71585', '#A01065']}
-//                   style={styles.selectedPassGradient}
-//                 >
-//                   <Image 
-//                     source={selectedPass === 'oneDay' ? 
-//                       require('../../assets/img/maleicon.png') :
-//                       require('../../assets/img/maleicon.png')}
-//                     style={styles.selectedPassIcon}
-//                   />
-//                   <Text style={styles.selectedPassTitle}>
-//                     {selectedPass === 'oneDay' ? 'One Day Pass' : 'Home Pass'}
-//                   </Text>
-//                 </LinearGradient>
-//               </View>
-//               <View style={styles.detailsContainer}>
-//                 <Text style={styles.detailsTitle}>Pass Details</Text>
-//                 {selectedPass === 'oneDay' ? (
-//                   <View style={styles.detailsList}>
-//                     <View style={styles.detailItem}>
-//                       <Text style={styles.detailLabel}>Duration:</Text>
-//                       <Text style={styles.detailValue}>12 hours</Text>
-//                     </View>
-//                     <View style={styles.detailItem}>
-//                       <Text style={styles.detailLabel}>Approval:</Text>
-//                       <Text style={styles.detailValue}>Warden</Text>
-//                     </View>
-//                     <View style={styles.detailItem}>
-//                       <Text style={styles.detailLabel}>Return Time:</Text>
-//                       <Text style={styles.detailValue}>Before 8 PM</Text>
-//                     </View>
-//                   </View>
-//                 ) : (
-//                   <View style={styles.detailsList}>
-//                     <View style={styles.detailItem}>
-//                       <Text style={styles.detailLabel}>Duration:</Text>
-//                       <Text style={styles.detailValue}>Up to 30 days</Text>
-//                     </View>
-//                     <View style={styles.detailItem}>
-//                       <Text style={styles.detailLabel}>Approval:</Text>
-//                       <Text style={styles.detailValue}>Warden + Guardian</Text>
-//                     </View>
-//                     <View style={styles.detailItem}>
-//                       <Text style={styles.detailLabel}>Requirements:</Text>
-//                       <Text style={styles.detailValue}>Parental Consent</Text>
-//                     </View>
-//                   </View>
-//                 )}
-//               </View>
-              
-//               <View style={styles.buttonContainer}>
-//                 <TouchableOpacity
-//                   style={styles.backToSelectionButton}
-//                   onPress={() => setStep(1)}
-//                 >
-//                   <Text style={styles.backToSelectionText}>Change</Text>
-//                 </TouchableOpacity>
-                
-//                 <TouchableOpacity
-//                   style={styles.confirmButton}
-//                   onPress={handleConfirm}
-//                 >
-//                   <Text style={styles.confirmButtonText}>Confirm</Text>
-//                 </TouchableOpacity>
-//               </View>
-//             </View>
-//           )}
-//         </ScrollView>
-//       </View>
-//     </LinearGradient>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   gradient: {
-//     flex: 1,
-//   },
-//   container: {
-//     flex: 1,
-//   },
-//   header: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     paddingHorizontal: 20,
-//     paddingTop: 50,
-//     paddingBottom: 20,
-//   },
-//   backButton: {
-//     marginRight: 15,
-//   },
-//   backIcon: {
-//     width: 24,
-//     height: 24,
-//   },
-//   headerText: {
-//     fontSize: 22,
-//     fontWeight: 'bold',
-//     color: '#43328B',
-//   },
-//   timeline: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     paddingHorizontal: 20,
-//     marginVertical: 20,
-//   },
-//   timelineItem: {
-//     alignItems: 'center',
-//     opacity: 0.5,
-//   },
-//   activeTimelineItem: {
-//     opacity: 1,
-//   },
-//   timelineNumber: {
-//     width: 30,
-//     height: 30,
-//     borderRadius: 15,
-//     backgroundColor: '#C71585',
-//     color: '#FFFFFF',
-//     textAlign: 'center',
-//     textAlignVertical: 'center',
-//     fontSize: 16,
-//     fontWeight: 'bold',
-//     marginBottom: 5,
-//   },
-//   timelineText: {
-//     fontSize: 12,
-//     color: '#333333',
-//   },
-//   timelineConnector: {
-//     height: 2,
-//     width: 40,
-//     backgroundColor: '#C71585',
-//     marginHorizontal: 5,
-//   },
-//   content: {
-//     flex: 1,
-//     padding: 20,
-//   },
-//   sectionTitle: {
-//     fontSize: 18,
-//     fontWeight: 'bold',
-//     color: '#43328B',
-//     marginBottom: 20,
-//     textAlign: 'center',
-//   },
-//   passSelection: {
-//     marginBottom: 20,
-//   },
-//   passOption: {
-//     marginBottom: 20,
-//     borderRadius: 15,
-//     overflow: 'hidden',
-//     shadowColor: '#000',
-//     shadowOffset: { width: 0, height: 3 },
-//     shadowOpacity: 0.1,
-//     shadowRadius: 5,
-//     elevation: 5,
-//   },
-//   passGradient: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     justifyContent: 'space-between',
-//     padding: 20,
-//     borderRadius: 15,
-//   },
-//   passDetails: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//   },
-//   passIcon: {
-//     width: 40,
-//     height: 40,
-//     marginRight: 15,
-//     tintColor: '#FFFFFF',
-//   },
-//   passTitle: {
-//     fontSize: 18,
-//     fontWeight: 'bold',
-//     color: '#FFFFFF',
-//   },
-//   passDescription: {
-//     fontSize: 14,
-//     color: '#FFFFFF',
-//     opacity: 0.8,
-//   },
-//   arrowContainer: {
-//     width: 30,
-//     height: 30,
-//     borderRadius: 15,
-//     backgroundColor: 'rgba(255, 255, 255, 0.3)',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//   },
-//   arrowText: {
-//     color: '#FFFFFF',
-//     fontSize: 18,
-//   },
-//   confirmSection: {
-//     flex: 1,
-//   },
-//   selectedPassContainer: {
-//     marginBottom: 20,
-//     borderRadius: 15,
-//     overflow: 'hidden',
-//     shadowColor: '#000',
-//     shadowOffset: { width: 0, height: 3 },
-//     shadowOpacity: 0.1,
-//     shadowRadius: 5,
-//     elevation: 5,
-//   },
-//   selectedPassGradient: {
-//     alignItems: 'center',
-//     padding: 20,
-//     borderRadius: 15,
-//   },
-//   selectedPassIcon: {
-//     width: 50,
-//     height: 50,
-//     marginBottom: 10,
-//     tintColor: '#FFFFFF',
-//   },
-//   selectedPassTitle: {
-//     fontSize: 20,
-//     fontWeight: 'bold',
-//     color: '#FFFFFF',
-//   },
-//   detailsContainer: {
-//     backgroundColor: '#FFFFFF',
-//     padding: 15,
-//     borderRadius: 10,
-//     marginBottom: 20,
-//     shadowColor: '#000',
-//     shadowOffset: { width: 0, height: 3 },
-//     shadowOpacity: 0.1,
-//     shadowRadius: 5,
-//     elevation: 5,
-//   },
-//   detailsTitle: {
-//     fontSize: 18,
-//     fontWeight: 'bold',
-//     color: '#43328B',
-//     marginBottom: 10,
-//   },
-//   detailsList: {
-//     paddingLeft: 10,
-//   },
-//   detailItem: {
-//     flexDirection: 'row',
-//     justifyContent: 'space-between',
-//     marginBottom: 5,
-//   },
-//   detailLabel: {
-//     fontSize: 16,
-//     fontWeight: 'bold',
-//     color: '#333333',
-//   },
-//   detailValue: {
-//     fontSize: 16,
-//     color: '#666666',
-//   },
-//   buttonContainer: {
-//     flexDirection: 'row',
-//     justifyContent: 'space-between',
-//     marginTop: 20,
-//   },
-//   backToSelectionButton: {
-//     backgroundColor: '#CCCCCC',
-//     paddingVertical: 12,
-//     paddingHorizontal: 20,
-//     borderRadius: 10,
-//   },
-//   backToSelectionText: {
-//     fontSize: 16,
-//     color: '#333333',
-//     fontWeight: 'bold',
-//   },
-//   confirmButton: {
-//     backgroundColor: '#C71585',
-//     paddingVertical: 12,
-//     paddingHorizontal: 20,
-//     borderRadius: 10,
-//   },
-//   confirmButtonText: {
-//     fontSize: 16,
-//     color: '#FFFFFF',
-//     fontWeight: 'bold',
-//   },
-// });
-
-// export default PassActivityPage;
-
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet,Image, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
 const PassActivityPage = () => {
   const navigation = useNavigation();
+
+  const [visitReason, setVisitReason] = useState('');
+  const [emergencyContact, setEmergencyContact] = useState('');
+  const [leaveTime, setLeaveTime] = useState('');
+  const [returnTime, setReturnTime] = useState('');
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async () => {
+    if (!visitReason || !emergencyContact || !leaveTime || !returnTime || !email) {
+      return Alert.alert('Missing Fields', 'Please fill all fields.');
+    }
+
+    const baseURL = 'http://10.0.2.2:8080';
+    const apiURL = `${baseURL}/api/resident/gatepass?residentEmail=${encodeURIComponent(email)}`;
+
+    const payload = {
+  visitReason,           // e.g. "Test visit"
+  emergencyContact,      // e.g. "9998887776"
+  leaveTime,             // MUST be "2025-06-01"
+  returnTime,            // MUST be "2025-06-02"
+};
+
+// …later…
+await axios.post(apiURL, payload);
+
+
+    try {
+      setIsSubmitting(true);
+      const res = await axios.post(apiURL, payload);
+      Alert.alert('Success', res.data, [
+        { text: 'OK', onPress: () => navigation.navigate('Dashboard') },
+      ]);
+      // Reset form
+      setVisitReason('');
+      setEmergencyContact('');
+      setLeaveTime('');
+      setReturnTime('');
+      setEmail('');
+    } catch (error) {
+      console.error('API Error full:', error);
+      console.error('Response data:', error.response?.data);
+      if (error.response) {
+        const { status, data } = error.response;
+        Alert.alert(`Error ${status}`, JSON.stringify(data));
+      } else {
+        Alert.alert('Error', error.message);
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <LinearGradient
-          colors={['#E6E6FA', '#43328B']}
-          locations={[0.01, 1]}
-          style={styles.gradient}
-        >
-          <View>
-                
-                <Text style={{fontSize:30, fontWeight:'bold',marginTop:30,marginLeft:20}}>Pass Approval</Text>
-                {/* <Text style={{fontSize:20,marginLeft:20}}>Let's Know about yourself</Text> */}
-                {/* <Image source={require('../../assets/img/signuppagepic.png')} style={styles.img}/> */}
-                <TextInput
-                placeholder="Enter your Name"
-                placeholderTextColor="#ced4da"
-                style={styles.input}/>
-                <TextInput
-                placeholder="Emergency Contact"
-                placeholderTextColor="#ced4da"
-                style={styles.input}/>
-                <TextInput
-                placeholder="Leaving Date"
-                placeholderTextColor="#ced4da"
-                style={styles.input}/>
-                <TextInput
-                placeholder="Return Date"
-                placeholderTextColor="#ced4da"
-                style={styles.input}/>
-                
-            <TouchableOpacity
-            style={styles.button1}
-            onPress={()=>{
-              Alert.alert(
-                'Success',
-                'Approval sent',
-                [
-                  {
-                    text: 'OK',
-                    onPress: () => navigation.navigate('Dashboard'),
-                  },
-                ],
-                { cancelable: false }
-              );
-            }}
-            >
-              <Text style={styles.buttonText}>
-                Submit
-              </Text>
-            </TouchableOpacity>
-              </View>
-        </LinearGradient>
+    <LinearGradient colors={['#E6E6FA', '#43328B']} style={styles.gradient}>
+      <Text style={styles.header}>Pass Approval</Text>
+      <TextInput
+        placeholder="Visit Reason"
+        style={styles.input}
+        value={visitReason}
+        onChangeText={setVisitReason}
+      />
+      <TextInput
+        placeholder="Emergency Contact"
+        style={styles.input}
+        value={emergencyContact}
+        onChangeText={setEmergencyContact}
+        keyboardType="phone-pad"
+      />
+      <TextInput
+        placeholder="Leave Date (YYYY-MM-DD)"
+        style={styles.input}
+        value={leaveTime}
+        onChangeText={setLeaveTime}
+      />
+      <TextInput
+        placeholder="Return Date (YYYY-MM-DD)"
+        style={styles.input}
+        value={returnTime}
+        onChangeText={setReturnTime}
+      />
+      <TextInput
+        placeholder="Your Registered Email"
+        style={styles.input}
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+      />
+
+      <TouchableOpacity
+        style={[styles.button, isSubmitting && { backgroundColor: '#888' }]}
+        onPress={handleSubmit}
+        disabled={isSubmitting}
+      >
+        <Text style={styles.buttonText}>
+          {isSubmitting ? 'Sending...' : 'Submit'}
+        </Text>
+      </TouchableOpacity>
+    </LinearGradient>
   );
 };
+export default PassActivityPage;
+
+
 const styles = StyleSheet.create({
   gradient: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
+    padding: 20,
+    justifyContent: 'center',
   },
-  img:{
-    width:150,
-    height:150,
-    // alignSelf:'center',
-    marginLeft:110,
-    marginTop:10,
-    marginBottom:10,
-  },
-  input: {
-    width: '88%',
-    borderWidth: 1,
-    borderColor: 'grey',
-    padding: 10,
-    borderRadius: 10,
-    marginBottom: 15,
-    height: 50,
-    marginTop:15,
-    backgroundColor: 'white',
-    marginLeft:20,
-    fontSize:14,
-    color:'black',
-    // marginTop:30,
-  },
-  button: {
-    backgroundColor: '#43328B',
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-    fontSize:20,
-    marginLeft:10,
-    marginRight:22,
-    marginTop: -10,
-    // marginBottom:15,
-    width:'auto',
-  },
-  button1: {
-    backgroundColor: '#43328B',
-    paddingVertical: 12,
-    // paddingHorizontal: 20,
-    borderRadius: 10,
-    // width: '10%',
-    // justifyContent:'center',
-    marginLeft:100,
-    marginRight:100,
-    marginTop: 30,
-    // marginBottom:15,
-    width:'auto',
-    fontSize:20,
-  },
-  buttonText: {
-    color: 'white', // Text color
-    fontSize: 20,
+  header: {
+    fontSize: 26,
     fontWeight: 'bold',
+    color: '#1c1c1c',
+    marginBottom: 20,
     textAlign: 'center',
   },
-  
-  
-  
+  input: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 12,
+    marginBottom: 15,
+    fontSize: 16,
+    color: '#000',
+  },
+  button: {
+    backgroundColor: '#4B0082',
+    padding: 14,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
 });
 
-export default PassActivityPage;
