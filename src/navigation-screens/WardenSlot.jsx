@@ -23,7 +23,7 @@ const WardenSlot = () => {
       colors={['#E6E6FA', '#43328B']}
         locations={[0.01, 1]}>
       <View>
-        <Text>WardenPass</Text>
+        <Text>WardenSlot</Text>
       </View>
       </LinearGradient>
     );

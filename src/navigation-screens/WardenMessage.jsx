@@ -24,7 +24,7 @@ const WardenMessage = () => {
       locations={[0.01, 1]}>
     <TouchableOpacity onPress={() => navigateTo('')}>
     <View>
-      <Text>WardenPass</Text>
+      <Text>WardenMessage</Text>
     </View>
     </TouchableOpacity>
     </LinearGradient>
