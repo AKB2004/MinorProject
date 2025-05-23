@@ -8,6 +8,12 @@ const WardenDashboard = () => {
   const navigation = useNavigation();
   const [slideAnimation] = useState(new Animated.Value(0));
   const [isExpanded, setIsExpanded] = useState(false);
+  const [unreadMessages, setUnreadMessages] = useState(5);
+const [pendingPassRequests, setPendingPassRequests] = useState(2);
+const [slotUpdates, setSlotUpdates] = useState(3);
+const [unmarkedAttendance, setUnmarkedAttendance] = useState(1);
+const [newComplaints, setNewComplaints] = useState(4);
+
 
   const navigateTo = (screenName) => {
     if (isExpanded) {
@@ -30,7 +36,7 @@ const WardenDashboard = () => {
       {/* Top icons */}
       <View style={styles.rowSpace}>
         <Image source={require('../../assets/img/dashboardFirstPic.png')} style={styles.img} />
-        <Image source={require('../../assets/img/notifications.png')} style={styles.imgSmall} />
+        
       </View>
 
       {/* Greeting */}
@@ -62,31 +68,62 @@ const WardenDashboard = () => {
 
       {/* Action buttons */}
       
-        <TouchableOpacity onPress={() => navigateTo('WardenPass')}>
-          <View style={styles.actionBtn}>
-            <Text style={styles.actionText}>Pass Management</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigateTo('WardenSlot')}>
-          <View style={styles.actionBtn}>
-            <Text style={styles.actionText}>Slot Management</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigateTo('WardenAttendance')}>
-          <View style={styles.actionBtn}>
-            <Text style={styles.actionText}>Attendance Management</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigateTo('WardenComplain')}>
-          <View style={styles.actionBtn}>
-            <Text style={styles.actionText}>Complain Management</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigateTo('WardenMessage')}>
-          <View style={styles.actionBtn}>
-            <Text style={styles.actionText}>Messages</Text>
-          </View>
-        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigateTo('WardenPass')} style={{ position: 'relative' }}>
+  <View style={styles.actionBtn}>
+    <Text style={styles.actionText}>Pass Management</Text>
+    {pendingPassRequests > 0 && (
+      <View style={styles.badge}>
+        <Text style={styles.badgeText}>{pendingPassRequests}</Text>
+      </View>
+    )}
+  </View>
+</TouchableOpacity>
+
+<TouchableOpacity onPress={() => navigateTo('WardenSlot')} style={{ position: 'relative' }}>
+  <View style={styles.actionBtn}>
+    <Text style={styles.actionText}>Slot Management</Text>
+    {slotUpdates > 0 && (
+      <View style={styles.badge}>
+        <Text style={styles.badgeText}>{slotUpdates}</Text>
+      </View>
+    )}
+  </View>
+</TouchableOpacity>
+
+<TouchableOpacity onPress={() => navigateTo('WardenAttendance')} style={{ position: 'relative' }}>
+  <View style={styles.actionBtn}>
+    <Text style={styles.actionText}>Attendance Management</Text>
+    {unmarkedAttendance > 0 && (
+      <View style={styles.badge}>
+        <Text style={styles.badgeText}>{unmarkedAttendance}</Text>
+      </View>
+    )}
+  </View>
+</TouchableOpacity>
+
+<TouchableOpacity onPress={() => navigateTo('WardenComplain')} style={{ position: 'relative' }}>
+  <View style={styles.actionBtn}>
+    <Text style={styles.actionText}>Complain Management</Text>
+    {newComplaints > 0 && (
+      <View style={styles.badge}>
+        <Text style={styles.badgeText}>{newComplaints}</Text>
+      </View>
+    )}
+  </View>
+</TouchableOpacity>
+
+<TouchableOpacity onPress={() => navigateTo('WardenMessage')} style={{ position: 'relative' }}>
+  <View style={styles.actionBtn}>
+    <Text style={styles.actionText}>Messages</Text>
+    {unreadMessages > 0 && (
+      <View style={styles.badge}>
+        <Text style={styles.badgeText}>{unreadMessages}</Text>
+      </View>
+    )}
+  </View>
+</TouchableOpacity>
+
+
     </LinearGradient>
   );
 };
@@ -110,13 +147,15 @@ const styles = StyleSheet.create({
     height: 70,
   },
   greeting: {
-    marginTop: 30,
+    marginLeft:10,
+    marginBottom:8,
+    // marginTop: 30,
   },
   greetingHi: {
-    fontSize: 30,
+    fontSize: 20,
   },
   greetingSub: {
-    fontSize: 20,
+    fontSize: 14,
     fontWeight: '300',
   },
   profileImg: {
@@ -124,9 +163,9 @@ const styles = StyleSheet.create({
     height: 120,
   },
   infoBlock: {
-    marginTop: 30,
+    // marginTop: 30,
     marginHorizontal: 15,
-    gap: 20,
+    gap: 0,
   },
   infoRow: {
     flexDirection: 'row',
@@ -141,11 +180,11 @@ const styles = StyleSheet.create({
     marginBottom:10,
   },
   infoTitle: {
-    fontSize: 19,
+    fontSize: 16,
     fontWeight: 'bold',
   },
   infoSub: {
-    fontSize: 19,
+    fontSize: 14,
     fontWeight: '300',
   },
   buttonRow: {
@@ -156,20 +195,20 @@ const styles = StyleSheet.create({
   actionBtn: {
     backgroundColor: '#43328B',
     borderRadius: 10,
-    width:280,
-    paddingTop:18,
-    paddingBottom:18,
+    width:250,
+    paddingTop:15,
+    paddingBottom:15,
     marginBottom:15,
     // paddingLeft:0,
-    marginLeft:60,
-    marginTop:10,
+    marginLeft:50,
+    marginTop:15,
 
     // paddingHorizontal: 20,
     // paddingVertical: 15,
   },
   actionText: {
     color: '#fff',
-    fontSize: 19,
+    fontSize: 14,
     fontWeight: 'bold',
     textAlign: 'center',
   },
@@ -214,6 +253,26 @@ const styles = StyleSheet.create({
     height: 30,
     tintColor: '#fff',
   },
+  badge: {
+  position: 'absolute',
+  top: -10,
+  right: 10,
+  backgroundColor: 'red',
+  borderRadius: 12,
+  paddingHorizontal: 6,
+  paddingVertical: 3,
+  minWidth: 24,
+  alignItems: 'center',
+  justifyContent: 'center',
+  zIndex: 1,
+},
+badgeText: {
+  color: 'white',
+  fontWeight: 'bold',
+  fontSize: 12,
+  textAlign: 'center',
+},
+
 });
 
 export default WardenDashboard;
