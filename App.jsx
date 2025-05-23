@@ -29,6 +29,7 @@ import WardenAttendance from './src/navigation-screens/WardenAttendance';
 import WardenSlot from './src/navigation-screens/WardenSlot';
 import WardenMessage from './src/navigation-screens/WardenMessage';
 import WardenComplain from './src/navigation-screens/WardenComplain';
+import HostellerNotification from './src/navigation-screens/HostellerNotification';
 
 
 
@@ -131,6 +132,11 @@ const App = () => {
         <Stack.Screen
         name="WardenMessage"
         component={WardenMessage}
+        options={{headerShown:false}}
+        />
+      <Stack.Screen
+        name="HostellerNotification"
+        component={HostellerNotification}
         options={{headerShown:false}}
         />
       </Stack.Navigator>

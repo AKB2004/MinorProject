@@ -631,6 +631,8 @@ import React, { useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
+import { KeyboardAvoidingView, Platform, Keyboard, TouchableWithoutFeedback } from 'react-native';
+
 
 // Configure axios defaults
 axios.defaults.headers.common['Content-Type'] = 'application/json';
@@ -749,6 +751,10 @@ const ComplaintPage = () => {
 
   return (
     <LinearGradient colors={['#E6E6FA', '#43328B']} locations={[0.01, 1]} style={styles.gradient}>
+      <View style={styles.container4}>
+            <Image source={require('../../assets/img/dashboardFirstPic.png')} style={styles.img4} />
+            </View>
+            
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <Text style={styles.texting}>Choose the Service</Text>
 
@@ -810,9 +816,9 @@ const ComplaintPage = () => {
         {/* Bottom nav here */}
       </View>
       <View style={styles.bottomNavContainer}>
-  <TouchableOpacity style={styles.navButton} onPress={() => navigateTo('AttendancePage')}>
+  {/* <TouchableOpacity style={styles.navButton} onPress={() => navigateTo('AttendancePage')}>
     <Image source={require('../../assets/img/attendanceBOTTOMicon.png')} style={styles.navIcon} />
-  </TouchableOpacity>
+  </TouchableOpacity> */}
 
   <TouchableOpacity style={styles.navButton} onPress={() => navigateTo('ComplaintPage')}>
     <LinearGradient colors={['#C71585', '#43328B']} style={styles.complaintButton}>
@@ -839,8 +845,8 @@ const ComplaintPage = () => {
 
 const styles = StyleSheet.create({
   gradient: { flex: 1 },
-  scrollContainer: { flexGrow: 1, paddingBottom: 120 },
-  texting: { fontSize: 30, fontWeight: 'bold', marginTop: 35, alignSelf: 'center' },
+  scrollContainer: { flexGrow: 1, paddingBottom: 350 },
+  texting: { fontSize: 22, fontWeight: 'bold', marginTop: 35, alignSelf: 'center' },
 
   divisionMange: {
     flexDirection: 'row',
@@ -875,7 +881,17 @@ const styles = StyleSheet.create({
     color: '#fff',
     alignSelf: 'center',
     marginTop: 4,
-    color:'black',
+    // color:'black',
+  },
+  img4: {
+    height: 70,
+    width: 200,
+  },
+  container4: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 10,
+    marginTop: 20,
   },
 
   passwordInput: {

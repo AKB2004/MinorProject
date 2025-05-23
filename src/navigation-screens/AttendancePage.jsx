@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
   // Bottom Navigation Styles
   bottomNavContainer: {
     position: 'absolute',
-    bottom: 10,
+    bottom: 0,
     left: 0,
     right: 0,
     height: 90,

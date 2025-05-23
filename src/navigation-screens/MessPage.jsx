@@ -56,7 +56,9 @@ const [slideAnimation] = useState(new Animated.Value(0));
     colors={['#E6E6FA', '#43328B']}
     locations={[0.01, 1]}
     style={styles.gradient}>
-
+<View style={styles.container4}>
+      <Image source={require('../../assets/img/dashboardFirstPic.png')} style={styles.img4} />
+      </View>
 
 
       <View>
@@ -68,7 +70,7 @@ const [slideAnimation] = useState(new Animated.Value(0));
         <View style={styles.horizontalView}>
         <View style={styles.messtexting}>
         <Text style={{fontSize:20,fontWeight:'bold'  }}>Breakfast</Text>
-        <Text>Aaloo Paratha, Sandwich, Chai and Dahi,milk</Text>
+        <Text>Aaloo Paratha, Sandwich, Chai and Milk, Dahi</Text>
         </View>
         <View style={styles.messtexting1}>
         <Text style={{fontSize:20, textAlign:'right',fontWeight:'bold' }}>Timings</Text>
@@ -100,7 +102,7 @@ const [slideAnimation] = useState(new Animated.Value(0));
       </View>
 
 <View style={styles.bottomNavContainer}>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.navButton}
           onPress={() => navigateTo('AttendancePage')}
         >
@@ -108,7 +110,7 @@ const [slideAnimation] = useState(new Animated.Value(0));
             source={require('../../assets/img/attendanceBOTTOMicon.png')}
             style={styles.navIcon}
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <TouchableOpacity
           style={styles.navButton}
           onPress={() => navigateTo('ComplaintPage')}
@@ -188,8 +190,8 @@ const styles = StyleSheet.create({
     // flexWrap:'wrap',
   },
   texting:{
-    fontSize:32,
-    marginTop:30,
+    fontSize:22,
+    // marginTop:30,
     marginLeft:20,
     fontWeight:'bold',
     // fontFamily: 'monospace',
@@ -216,6 +218,16 @@ const styles = StyleSheet.create({
   img3: {
     height: 50,
     width: 50,
+  },
+  img4: {
+    height: 70,
+    width: 200,
+  },
+  container4: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 10,
+    marginTop: 20,
   },
   container: {
     flexDirection: 'row',
@@ -263,7 +275,7 @@ const styles = StyleSheet.create({
   // Bottom Navigation Styles
   bottomNavContainer: {
     position: 'absolute',
-    bottom: 10,
+    bottom: 0,
     left: 0,
     right: 0,
     height: 90,
