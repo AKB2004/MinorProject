@@ -1,300 +1,274 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-import { View, Text, StyleSheet, Image, TouchableOpacity, Animated } from 'react-native';
-import React, {useState} from 'react';
-import LinearGradient from 'react-native-linear-gradient';
-import { useNavigation } from '@react-navigation/native';
+// import { View, Text } from 'react-native';
+// import React from 'react';
+
+// const AttendancePage = () => {
+//   return (
+//     <View>
+//       <Text>AttendancePage</Text>
+//     </View>
+//   );
+// };
+
+// export default AttendancePage;
 
 
+import React, {useEffect, useState, useRef} from 'react';
+import {
+  StyleSheet,
+  View,
+  Platform,
+  PermissionsAndroid,
+  Alert,
+  ActivityIndicator,
+  Button,
+} from 'react-native';
+import MapView, {Marker, Polyline} from 'react-native-maps';
+import Geolocation from '@react-native-community/geolocation';
+import {getDistance} from 'geolib';
 
-const AttendancePage = () => {
-    const navigation = useNavigation();
-const [slideAnimation] = useState(new Animated.Value(0));
-  const [isExpanded, setIsExpanded] = useState(false);
+export default function App() {
+  const [location, setLocation] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [source, setSource] = useState(null);
+  const [destination, setDestination] = useState(null);
+  const [isChoosingSource, setIsChoosingSource] = useState(false);
+  const [isChoosingDestination, setIsChoosingDestination] = useState(false);
+  const mapRef = useRef(null);
 
-  // Toggle the expanded state
-  // const toggleExpanded = () => {
-  //   const toValue = isExpanded ? 0 : 1;
-
-  //   Animated.spring(slideAnimation, {
-  //     toValue,
-  //     friction: 5,
-  //     tension: 40,
-  //     useNativeDriver: true,
-  //   }).start();
-
-  //   setIsExpanded(!isExpanded);
-  // };
-
-  // Navigate to a specific screen
-  const navigateTo = (screenName) => {
-    // Close the panel if it's open
-    if (isExpanded) {
-      Animated.spring(slideAnimation, {
-        toValue: 0,
-        friction: 5,
-        tension: 40,
-        useNativeDriver: true,
-      }).start(() => {
-        setIsExpanded(false);
-      });
-    }
-
-    // Navigate to the screen
-    navigation.navigate(screenName);
+  const defaultLocation = {
+    latitude: 37.78825,
+    longitude: -122.4324,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
   };
 
-  // Calculate the translation based on animation value
-  const translateY = slideAnimation.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, 100], // Adjust this value based on how much you want it to slide up
-  });
+  const getCurrentLocation = () => {
+    Geolocation.getCurrentPosition(
+      position => {
+        setLocation({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01,
+        });
+        setLoading(false);
+      },
+      error => {
+        Alert.alert(
+          'Error',
+          `Failed to get your location: ${error.message}` +
+            ' Make sure your location is enabled.',
+        );
+        setLocation(defaultLocation);
+        setLoading(false);
+      }
+    );
+  };
+
+  useEffect(() => {
+    const requestLocationPermission = async () => {
+      if (Platform.OS === 'android') {
+        try {
+          const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+          );
+          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            getCurrentLocation();
+          } else {
+            Alert.alert(
+              'Permission Denied',
+              'Location permission is required to show your current location on the map.',
+            );
+            setLocation(defaultLocation);
+            setLoading(false);
+          }
+        } catch (err) {
+          console.warn(err);
+          setLocation(defaultLocation);
+          setLoading(false);
+        }
+      } else {
+        getCurrentLocation();
+      }
+    };
+
+    requestLocationPermission();
+  }, []);
+
+  const handleMapPress = e => {
+    const coordinate = e.nativeEvent.coordinate;
+    if (isChoosingSource) {
+      setSource(coordinate);
+      setIsChoosingSource(false);
+    } else if (isChoosingDestination) {
+      setDestination(coordinate);
+      setIsChoosingDestination(false);
+    }
+  };
+
+  const showCoordinates = () => {
+    if (source && destination) {
+      const distance =
+        getDistance(
+          {latitude: source.latitude, longitude: source.longitude},
+          {latitude: destination.latitude, longitude: destination.longitude},
+        ) / 1000; // Convert to kilometers
+      Alert.alert(
+        'Coordinates and Distance',
+        `Source: \nLatitude: ${source.latitude}, Longitude: ${
+          source.longitude
+        }\n\nDestination: \nLatitude: ${destination.latitude}, Longitude: ${
+          destination.longitude
+        }\n\nDistance between source and destination: ${distance.toFixed(
+          2,
+        )} kilometers`,
+      );
+    } else {
+      Alert.alert(
+        'Error',
+        'Please select both source and destination coordinates.',
+      );
+    }
+  };
+
+  const removeSource = () => {
+    setSource(null);
+  };
+
+  const removeDestination = () => {
+    setDestination(null);
+  };
+
+  const zoomToMarker = marker => {
+    if (mapRef.current && marker) {
+      mapRef.current.animateToRegion({
+        latitude: marker.latitude,
+        longitude: marker.longitude,
+        latitudeDelta: 0.05,
+        longitudeDelta: 0.05,
+      });
+    }
+  };
 
   return (
-    <LinearGradient
-    colors={['#E6E6FA', '#43328B']}
-    locations={[0.01, 1]}
-    style={styles.gradient}>
-
-    <View>
-      <Text style={styles.texting}>
-        Attendance status
-      </Text>
+    <View style={styles.container}>
+      {loading ? (
+        <ActivityIndicator size="large" color="#0000ff" />
+      ) : (
+        <>
+          <MapView
+            ref={mapRef}
+            style={styles.map}
+            showsUserLocation={true}
+            region={location}
+            onPress={handleMapPress}>
+            {/* Render default markers */}
+            <Marker coordinate={location} />
+            {/* Render main markers */}
+            {source && (
+              <Marker
+                coordinate={source}
+                title={'Source'}
+                description={'Your source location'}
+                pinColor={'green'}
+                onPress={() => zoomToMarker(source)}
+              />
+            )}
+            {destination && (
+              <Marker
+                coordinate={destination}
+                title={'Destination'}
+                description={'Your destination location'}
+                pinColor={'blue'}
+                onPress={() => zoomToMarker(destination)}
+              />
+            )}
+            {source && destination && (
+              <Polyline
+                coordinates={[source, destination]}
+                strokeColor="#000"
+                strokeWidth={2}
+              />
+            )}
+          </MapView>
+          <View style={styles.buttonContainer}>
+            <View style={styles.buttonGroup}>
+              {source ? (
+                <Button title="Remove Source" onPress={removeSource} />
+              ) : (
+                <Button
+                  title={
+                    isChoosingSource ? 'Please Choose Source' : 'Choose Source'
+                  }
+                  onPress={() => setIsChoosingSource(true)}
+                />
+              )}
+              {destination ? (
+                <Button
+                  title="Remove Destination"
+                  onPress={removeDestination}
+                />
+              ) : (
+                <Button
+                  title={
+                    isChoosingDestination
+                      ? 'Please Choose Destination'
+                      : 'Choose Destination'
+                  }
+                  onPress={() => setIsChoosingDestination(true)}
+                />
+              )}
+            </View>
+            <Button title="Show Coordinates" onPress={showCoordinates} />
+          </View>
+        </>
+      )}
     </View>
-
-
-
-
-
-
-
-<View style={styles.bottomNavContainer}>
-        <TouchableOpacity
-          style={styles.navButton}
-          onPress={() => navigateTo('AttendancePage')}
-        >
-            <LinearGradient
-            colors={['#C71585', '#43328B']}
-            style={styles.attendanceButton}
-            borderRadius={30}
-          >
-          <Image
-            source={require('../../assets/img/attendanceBOTTOMicon.png')}
-            style={styles.navIcon}
-          />
-          </LinearGradient>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.navButton}
-          onPress={() => navigateTo('ComplaintPage')}
-        >
-          <Image
-            source={require('../../assets/img/complaintBOTTOMicon.png')}
-            style={styles.navIcon}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.homeButton}
-          onPress={() => navigateTo('Dashboard')}
-          // onPress={toggleExpanded}
-        >
-          {/* <LinearGradient
-            colors={['red', '#43328B']}
-            style={styles.homeButtonGradient}
-            borderRadius={30}
-          > */}
-            <Image
-              source={require('../../assets/img/homeBOTTOMicon.png')}
-              style={styles.homeIcon}
-            />
-          {/* </LinearGradient> */}
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.navButton}
-          onPress={() => navigateTo('MessPage')}
-        >
-          <Image
-            source={require('../../assets/img/messBOTTOMicon.png')}
-            style={styles.navIcon}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.navButton}
-          onPress={() => navigateTo('MessagingPage')}
-        >
-          <Image
-            source={require('../../assets/img/message.png')}
-            style={styles.navIcon}
-          />
-        </TouchableOpacity>
-      </View>
-
-    </LinearGradient>
-);
-};
+  );
+}
 
 const styles = StyleSheet.create({
-  gradient: {
-    flex: 1,
-  },
-  texting:{
-    alignSelf:'center',
-    fontSize:30,
-    fontWeight:'bold',
-    marginTop:30,
-  },
-  img: {
-    height: 70,
-    width: 200,
-  },
-  img1: {
-    height: 70,
-    width: 50,
-  },
-  img2: {
-    height: 120,
-    width: 120,
-  },
-  img3: {
-    height: 50,
-    width: 50,
-  },
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginLeft: 15,
-    marginTop: 20,
-    marginRight: 10,
-  },
-  container1: {
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    marginTop: 30,
-    gap: 20,
-    marginLeft: 15,
-  },
-  attendanceButton: {
-    height: 60, // Increase height for uplift
-    width: 60,
+    ...StyleSheet.absoluteFillObject,
     justifyContent: 'center',
+
     alignItems: 'center',
-    marginBottom: 30, // Lift icon upwards
-    backgroundColor: '#fff',
-    borderRadius: 30,
-    elevation: 5, // Shadow for a floating effect
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
+//   buttonContainer: {
+//     position: 'absolute',
+//     bottom: 20,
+//     left: 10,
+//     right: 20,
+//   },
+//   buttonGroup: {
+//     flexDirection: 'row',
+//     justifyContent: 'space-between',
+//     marginBottom: 10,
+//   },
+
+  buttonContainer: {
+  position: 'absolute',
+  bottom: 30,
+  left: 20,
+  right: 20,
+  zIndex: 999, // Ensures it stays above the map
+  paddingHorizontal: 10,
 },
-  text1: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginLeft: 10,
-  },
-  text2: {
-    fontSize: 20,
-    fontWeight: 'light',
-  },
-  text3: {
-    fontSize: 19,
-    fontWeight: 'bold',
-  },
-  text4: {
-    fontSize: 19,
-    fontWeight: 'light',
-  },
 
-  // Bottom Navigation Styles
-  bottomNavContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: 90,
-    backgroundColor: '#43328B',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    paddingHorizontal: 8,
-    // borderTopLeftRadius: 15,
-    // borderTopRightRadius: 15,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: -2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 5,
-  },
-  navButton: {
-    height: 50,
-    width: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  navIcon: {
-    height: 28,
-    width: 28,
-  },
-  // navIcon1: {
-  //   height: 26,
-  //   width: 28,
-  // },
-  homeButton: {
-    height: 60,
-    width: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 5,
-  },
-  homeButtonGradient: {
-    height: 60,
-    width: 60,
-    borderRadius: 30,
-
-    justifyContent: 'center',
-    alignItems: 'center',
-    elevation: 5,
-  },
-  homeIcon: {
-    height: 30,
-    width: 30,
-    tintColor: '#fff',
-    // marginBottom:35,
-  },
-  // Expandable Panel Styles
-  expandablePanel: {
-    position: 'absolute',
-    bottom: 70,
-    left: 0,
-    right: 0,
-    backgroundColor: 'transparent',
-    zIndex: 999,
-  },
-  // panelContent: {
-  //   backgroundColor: '#fff',
-  //   borderRadius: 20,
-  //   marginHorizontal: 20,
-  //   padding: 15,
-  //   shadowColor: '#000',
-  //   shadowOffset: { width: 0, height: 2 },
-  //   shadowOpacity: 0.1,
-  //   shadowRadius: 4,
-  //   elevation: 3,
-  // },
-  // cardButton: {
-  //   flexDirection: 'row',
-  //   alignItems: 'center',
-  //   backgroundColor: '#f0f0f0',
-  //   padding: 12,
-  //   borderRadius: 10,
-  // },
-  // cardIcon: {
-  //   width: 24,
-  //   height: 24,
-  //   marginRight: 10,
-  // },
-  // cardText: {
-  //   fontSize: 16,
-  //   color: '#43328B',
-  //   fontWeight: '500',
-  // },
+buttonGroup: {
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+  alignItems: 'center',
+//   backgroundColor: 'rgba(255, 255, 255, 0.9)',
+  borderRadius: 12,
+  padding: 10,
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.3,
+  shadowRadius: 4,
+  elevation: 5, // Android shadow
+},
 });
-
-
-export default AttendancePage;

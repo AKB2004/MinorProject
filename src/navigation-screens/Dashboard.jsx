@@ -107,9 +107,9 @@ const Dashboard = () => {
 
       {/* Bottom Navigation Bar */}
       <View style={styles.bottomNavContainer}>
-        {/* <TouchableOpacity style={styles.navButton} onPress={() => navigateTo('AttendancePage')}>
+        <TouchableOpacity style={styles.navButton} onPress={() => navigateTo('AttendancePage')}>
           <Image source={require('../../assets/img/attendanceBOTTOMicon.png')} style={styles.navIcon} />
-        </TouchableOpacity> */}
+        </TouchableOpacity>
 
         <TouchableOpacity style={styles.navButton} onPress={() => navigateTo('ComplaintPage')}>
           <Image source={require('../../assets/img/complaintBOTTOMicon.png')} style={styles.navIcon} />

@@ -84,6 +84,7 @@ const PassActivityPage = () => {
           style={styles.input}
           value={visitReason}
           onChangeText={setVisitReason}
+          placeholderTextColor="#ced4da"
         />
         <TextInput
           placeholder="Emergency Contact"
@@ -91,18 +92,21 @@ const PassActivityPage = () => {
           value={emergencyContact}
           onChangeText={setEmergencyContact}
           keyboardType="phone-pad"
+          placeholderTextColor="#ced4da"
         />
         <TextInput
           placeholder="Leave Date (YYYY-MM-DD)"
           style={styles.input}
           value={leaveTime}
           onChangeText={setLeaveTime}
+          placeholderTextColor="#ced4da"
         />
         <TextInput
           placeholder="Return Date (YYYY-MM-DD)"
           style={styles.input}
           value={returnTime}
           onChangeText={setReturnTime}
+          placeholderTextColor="#ced4da"
         />
         <TextInput
           placeholder="Your Registered Email"
@@ -110,6 +114,7 @@ const PassActivityPage = () => {
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
+          placeholderTextColor="#ced4da"
         />
 
         {/* Submit Button */}
