@@ -105,11 +105,6 @@ const App = () => {
         options={{headerShown:false}}
         />
         <Stack.Screen
-        name="MessagingPage"
-        component={MessagingPage}
-        options={{headerShown:false}}
-        />
-        <Stack.Screen
         name="WardenPass"
         component={WardenPass}
         options={{headerShown:false}}
@@ -129,10 +124,13 @@ const App = () => {
         component={WardenComplain}
         options={{headerShown:false}}
         />
-        <Stack.Screen
-        name="WardenMessage"
+        <Stack.Screen name="MessagingPage"
+        component={MessagingPage}
+        options={{ headerShown: false }}
+        />
+        <Stack.Screen name="WardenMessage"
         component={WardenMessage}
-        options={{headerShown:false}}
+        options={{ headerShown: false }}
         />
       <Stack.Screen
         name="HostellerNotification"
