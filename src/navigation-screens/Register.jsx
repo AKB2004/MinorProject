@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
       marginLeft:20,
       fontSize:14,
+      color:'black',
       // marginTop:30,
     },
     input1: {
@@ -116,6 +117,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
       marginLeft:20,
       fontSize:14,
+      color:'black',
       // marginTop:30,
     },
     button: {
@@ -169,6 +171,7 @@ const styles = StyleSheet.create({
       flex: 1,
       padding: 10,
       fontSize:14,
+      color:'black',
     },
 });
 export default Register;
