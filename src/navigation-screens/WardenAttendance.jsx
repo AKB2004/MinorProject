@@ -5,19 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const WardenAttendance = () => {
   const navigation = useNavigation();
-      // const [isExpanded, setIsExpanded] = useState(false);
       
-      //   const navigateTo = (screenName) => {
-      //     if (isExpanded) {
-      //       Animated.spring(slideAnimation, {
-      //         toValue: 0,
-      //         friction: 5,
-      //         tension: 40,
-      //         useNativeDriver: true,
-      //       }).start(() => setIsExpanded(false));
-      //     }
-      //     navigation.navigate(screenName);
-      //   };
     return (
       <LinearGradient style={styles.gradient}
       colors={['#E6E6FA', '#43328B']}
