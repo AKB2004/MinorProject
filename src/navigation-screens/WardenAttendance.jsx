@@ -1,27 +1,49 @@
-import { View, Text, TouchableOpacity,StyleSheet } from 'react-native';
-import React from 'react';
-import { useNavigation } from '@react-navigation/native';
-import LinearGradient from 'react-native-linear-gradient';
+// WardenAttendance.jsx
+import React, { useEffect, useState } from 'react';
+import { View, Text, Button, FlatList, StyleSheet, Platform } from 'react-native';
+import axios from 'axios';
 
-const WardenAttendance = () => {
-  const navigation = useNavigation();
-      
-    return (
-      <LinearGradient style={styles.gradient}
-      colors={['#E6E6FA', '#43328B']}
-        locations={[0.01, 1]}>
-      <View>
-        <Text>WardenPass</Text>
-      </View>
-      </LinearGradient>
-    );
+const BASE_URL =
+  Platform.OS === 'android'
+    ? 'http://10.0.2.2:5000'
+    : 'http://localhost:5000';
+
+export default function WardenAttendance() {
+  const [list, setList] = useState([]);
+
+  const fetchList = async () => {
+    try {
+      console.log('[WARDEN] fetching today at', `${BASE_URL}/api/attendance/today`);
+      const res = await axios.get(`${BASE_URL}/api/attendance/today`);
+      console.log('[WARDEN] got:', res.data);
+      setList(res.data);
+    } catch (err) {
+      console.warn('[WARDEN] fetch error:', err.message);
+    }
   };
-  
-  
-  const styles = StyleSheet.create({
-    gradient: {
-      flex: 1,
-    },
-  });
-  
-export default WardenAttendance;
+
+  useEffect(() => {
+    fetchList();
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      <Button title="Refresh Attendance" onPress={fetchList} />
+      <FlatList
+        data={list}
+        keyExtractor={item => item._id}
+        renderItem={({ item }) => (
+          <Text style={styles.item}>
+            • {item.studentId} @ {new Date(item.timestamp).toLocaleTimeString()}
+          </Text>
+        )}
+        ListEmptyComponent={<Text>No check-ins yet.</Text>}
+      />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 16 },
+  item: { marginVertical: 4 },
+});
